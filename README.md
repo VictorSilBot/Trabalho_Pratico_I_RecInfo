@@ -1,11 +1,11 @@
-# Trabalho Prático 1 — Recuperação de Informação (SCC0282)
+# Trabalho Prático 1 - Recuperação de Informação (SCC0282)
 
 Sistema de recuperação textual sobre a coleção **Cranfield**, com **Modelo
 Vetorial** (TF-IDF + similaridade do cosseno) e **Modelo Probabilístico**
 (**BM25** implementado explicitamente), avaliados com Precision@10, Recall@10,
 F1@10, MAP, MRR e NDCG@10.
 
-ICMC / USP — 2º semestre de 2026 — Prof. Marcelo G. Manzato
+ICMC / USP - 2º semestre de 2026 - Prof. Marcelo G. Manzato
 
 ---
 
@@ -95,7 +95,7 @@ de avaliação. As bibliotecas são usadas para tarefas auxiliares
 (tokenização auxiliar, stopwords, stemming, álgebra esparsa, gráficos). O
 `TfidfVectorizer` do scikit-learn aparece **exclusivamente** em
 `tests/test_ir_tp1.py`, como verificação independente do nosso modelo
-vetorial — nunca no pipeline de resultados.
+vetorial, nunca no pipeline de resultados.
 
 ---
 
@@ -152,8 +152,7 @@ relevância).
 │   ├── experiments.py             # todos os experimentos (req. 1–9)
 │   └── plots.py                   # figuras
 ├── tests/test_ir_tp1.py           # 16 testes de correção
-├── report/
-│   ├── build_report.py            # gera o PDF
+├── report/ 
 │   └── relatorio.pdf              # relatório final (6 páginas)
 ├── data/cran/                     # coleção (baixada automaticamente)
 ├── results/                       # todos os resultados (CSV + JSON)
