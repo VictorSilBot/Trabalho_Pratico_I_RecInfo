@@ -240,4 +240,4 @@ Os 16 testes cobrem três frentes:
 ## 8. Uso de ferramentas de IA
 
 Consta na seção correspondente do relatório
-(`report/relatorio.pdf`, seção 7).
+(`report/relatorio.pdf`, seção 6).
