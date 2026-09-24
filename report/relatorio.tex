@@ -1,0 +1,713 @@
+% =====================================================================
+%  Trabalho Prático 1 - Recuperação de Informação (SCC0282)
+%  Modelo Vetorial e BM25 na coleção Cranfield
+%
+%  IMAGENS NECESSÁRIAS (subir no Overleaf):
+%    usp.jpg                                       -> brasão na capa (raiz)
+%    figures/fig1b_preprocessamento_compacto.png   -> Figura 1
+%    figures/fig3_curva_precisao_revocacao.png     -> Figura 2
+%    figures/fig5_ap_por_consulta.png              -> Figura 3
+%    figures/fig4_bm25_grade_MAP.png               -> Figura 4
+% =====================================================================
+
+\documentclass[10pt,twocolumn,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=1.8cm,right=1.8cm,columnsep=0.7cm]{geometry}
+\usepackage{mathptmx}
+\usepackage[scaled=0.9]{helvet}
+\usepackage{courier}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\captionsetup{font=small,labelfont=bf,justification=centering}
+\captionsetup[table]{skip=3pt}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.2em}
+
+% Marcação de documento relevante nas tabelas de Top-5
+\newcommand{\rel}[1]{\textbf{#1}$^{\bullet}$}
+
+% Tipografia dos títulos de seção
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+% =====================================================================
+\begin{document}
+
+% ---------------------------------------------------------------------
+% Capa (página única, fora do layout de duas colunas)
+% ---------------------------------------------------------------------
+\begin{titlepage}
+\centering
+{\large \textbf{Universidade de São Paulo}\\
+Instituto de Ciências Matemáticas e de Computação (ICMC)\par}
+\vspace{1.5cm}
+
+\includegraphics[width=0.3\textwidth]{usp.jpg}
+
+\rule{\linewidth}{1pt}
+\vspace{0.3cm}
+{\Huge \textbf{Modelo Vetorial e BM25 na coleção Cranfield: pré-processamento, parametriza\c{c}\~ao e análise de erros}\par}
+\vspace{0.3cm}
+\rule{\linewidth}{1pt}
+\vspace{2cm}
+
+{\large \textbf{Autores:}\par}
+\vspace{0.5cm}
+\begin{tabular}{lll}
+Victor Silva Botelho & N.\textsuperscript{o} USP: 15645421 & \texttt{victorbotelho@usp.br} \\
+João Pedro Barbosa Madeira & N.\textsuperscript{o} USP: 13683038 & \texttt{Joaopedro08madeira@gmail.com} \\
+\end{tabular}
+
+\vfill
+
+{\large \textbf{Curso:} SCC0282 - Recuperação da Informação (2026/2)\\
+\textbf{Professor:} Prof. Marcelo Garcia Manzato\par}
+\vspace{0.5cm}
+{\large \today\par}
+\end{titlepage}
+
+% ---------------------------------------------------------------------
+\section{Introdução}
+
+Sistemas de recuperação de informação precisam ordenar uma coleção inteira a
+partir de uma consulta curta e ambígua. Os modelos clássicos resolvem isso de
+maneiras distintas: o modelo vetorial representa documentos e consultas como
+vetores de pesos TF-IDF e ordena pela similaridade do cosseno, enquanto o BM25
+parte do arcabouço probabilístico e pondera cada termo com saturação de
+frequência e normalização explícita por comprimento. Embora ambos valorizem
+termos raros e controlem a influência da frequência, fazem-no de formas
+diferentes, e é justamente essa diferença que este trabalho procura tornar
+visível.
+
+O objetivo é construir e avaliar um sistema de recuperação textual sobre a
+coleção Cranfield, comparando estratégias de pré-processamento, os dois modelos
+de ranqueamento e a parametrização do BM25 e, mais importante, explicar por que
+os comportamentos observados ocorrem, com base em exemplos concretos. A
+principal conclusão é que, nesta coleção, quase toda a discordância entre os
+dois modelos é explicada por um único mecanismo: a forma como cada um normaliza
+o comprimento dos documentos. Essa hipótese é levantada a partir da inspeção de
+consultas individuais e depois confirmada quantitativamente sobre as 225
+consultas.
+
+% ---------------------------------------------------------------------
+\section{Técnicas Utilizadas}
+
+\subsection{Pré-processamento}
+
+O texto passa por normalização para minúsculas e tokenização por expressão
+regular \verb|[a-z]+|, que é determinística e adequada ao texto técnico ASCII do
+Cranfield. A escolha tem um efeito colateral relevante: hifens viram
+separadores, de modo que \texttt{boundary-layer-control} gera três tokens e
+\texttt{photo-thermoelastic} gera \texttt{photo} e \texttt{thermoelast}, fato
+que reaparece na Seção~\ref{sec:reform}. A remoção de stopwords usa a lista
+\textit{english} do NLTK (198 formas, expandidas para fragmentos alfabéticos) e
+o stemming usa o algoritmo de Porter. As stopwords são removidas antes do
+stemming, pois a lista é definida sobre formas plenas e o radical de uma
+stopword pode coincidir com o de um termo de conteúdo.
+
+\subsection{Modelo Vetorial}
+
+Adotamos o esquema apresentado em aula (ltc.ltc na notação SMART), aplicado
+igualmente a documentos e consultas:
+\[
+  w_{i,j} = \bigl(1 + \log_{10} f_{i,j}\bigr) \times \log_{10}\!\frac{N}{n_i}.
+\]
+Cada documento é um vetor de dimensão $|V| = 4292$, com uma coordenada por termo
+do vocabulário e praticamente todas nulas. O score é a similaridade do cosseno,
+\[
+  \mathrm{sim}(d,q) = \frac{d \cdot q}{\lVert d \rVert \, \lVert q \rVert},
+\]
+em que o numerador mede o alinhamento entre consulta e documento e o denominador
+remove o efeito da magnitude. Como normalizamos os vetores para norma unitária
+já na indexação, o cosseno se reduz a um produto interno: é o mesmo cálculo,
+reorganizado para ser feito de uma vez sobre os 1400 documentos. Note que o idf
+vale exatamente zero para um termo presente em toda a coleção, que assim é
+eliminado do ranking.
+
+\subsection{BM25}
+
+O BM25 foi implementado explicitamente, termo a termo, sem biblioteca de
+ranqueamento:
+\[
+  \mathrm{score}(d,q) = \sum_{t \in q}
+  \mathrm{IDF}(t)\,
+  \frac{f_{t,d}\,(k_1+1)}
+       {f_{t,d} + k_1\!\left(1-b+b\,\dfrac{|d|}{\mathrm{avgdl}}\right)}.
+\]
+O quociente cresce com a frequência mas satura em $k_1+1$, ao contrário do tf
+logarítmico do modelo vetorial; $k_1$ controla quão rápido essa saturação ocorre
+(com $k_1 = 0$ o modelo vira binário) e $b$ interpola entre nenhuma normalização
+por comprimento ($b = 0$) e normalização integral ($b = 1$). Somamos a
+contribuição de um termo tantas vezes quanto ele ocorre na consulta, o que
+equivale a $k_3 \to \infty$. Usamos o IDF de Robertson suavizado,
+$\log\!\left(1 + \frac{N-n+0{,}5}{n+0{,}5}\right)$, cujo ``$1+$'' impede valores
+negativos para termos muito frequentes.
+
+Vale registrar uma identidade algébrica que explica um resultado nosso: aquela
+expressão é idêntica a $\log\frac{N+1}{n+0{,}5}$, ao passo que a forma do BIM
+vista em aula é $\log\frac{N+0{,}5}{n+0{,}5}$. As duas diferem apenas por uma
+constante aditiva $\log\frac{N+1}{N+0{,}5} \approx 0{,}00036$ em todos os termos.
+Por isso, ao testarmos as duas variantes, o MAP mudou apenas na sexta casa
+decimal (0,304827 contra 0,304821): a escolha entre elas é irrelevante nesta
+coleção, e o motivo é algébrico, não empírico.
+
+\subsection{Decisões de implementação}
+
+\textbf{Índice compartilhado.} Ambos os modelos derivam seus pesos da mesma
+matriz esparsa de frequências brutas, garantindo que qualquer diferença venha da
+função de ranqueamento e não da indexação. \textbf{Texto indexado:} em 1395 dos
+1400 documentos o campo \texttt{.W} já começa com o título; concatenar
+\texttt{.T} dobraria o tf dos termos do título, então só o fazemos quando o
+título ainda não é prefixo do resumo. \textbf{Desempate determinístico:} scores
+iguais são ordenados pelo \texttt{doc\_id} crescente, de modo que duas execuções
+produzem rankings idênticos.
+
+% ---------------------------------------------------------------------
+\section{Avaliação}
+
+\textbf{Coleção.} Cranfield: 1400 documentos de aerodinâmica, 225 consultas em
+linguagem natural e 1837 julgamentos de relevância, obtida dos arquivos
+originais da University of Glasgow. Cada consulta tem entre 1 e 39 documentos
+relevantes (média 7,2), e nenhuma fica sem relevantes.
+
+Dois detalhes da coleção exigem cuidado. Primeiro, os identificadores
+\texttt{.I} das consultas não são sequenciais (001, 002, 004, \dots, 365), mas o
+arquivo \texttt{cranqrel} numera as consultas de 1 a 225 pela posição no
+arquivo; usar o \texttt{.I} como chave desalinha silenciosamente consultas e
+julgamentos. Renumeramos por posição, como faz o \texttt{ir\_datasets}. Segundo,
+a escala de relevância do Cranfield é invertida: o grau 1 é o melhor (``resposta
+completa'') e o 4 é o pior (``interesse mínimo'').
+
+\textbf{Relevância.} Para as métricas binárias seguimos o enunciado: relevante
+$\Leftrightarrow$ grau $\geq 1$; graus $-1$ e documentos não julgados contam como
+não relevantes. Para o NDCG mantivemos os graus positivos como relevância
+graduada, mas corrigindo a inversão ($1\!\to\!4$, $2\!\to\!3$, $3\!\to\!2$,
+$4\!\to\!1$): usar o grau bruto daria o maior ganho ao documento menos
+relevante. A diferença não é cosmética: o NDCG@10 do BM25 vale 0,355 com o
+mapeamento corrigido e apenas 0,304 com o grau bruto.
+
+\textbf{Métricas.} P@10, R@10, F1@10, MAP, MRR e NDCG@10, definidas como em
+aula: $\mathrm{AP}(q) = \frac{1}{|R_q|}\sum_k P@k \cdot \mathrm{rel}(k)$, com
+$|R_q|$ contando todos os relevantes (relevantes não recuperados penalizam a
+métrica); $\mathrm{DCG}@k = \sum_i \frac{2^{\mathrm{rel}_i}-1}{\log_2(i+1)}$; e
+curva precisão-revocação interpolada em 11 pontos por
+$P(r) = \max_{r' \geq r} P(r')$. Todas foram implementadas por nós e validadas
+contra os valores calculados à mão no exercício do slide 41 da Aula 05.
+
+\textbf{Configuração experimental.} O ranking é calculado sobre os 1400
+documentos e os cortes @10 aplicados só na avaliação. Os qrels são usados
+exclusivamente para avaliar: nenhuma etapa de indexação, ponderação, escolha de
+parâmetros ou reformulação os consulta. A configuração principal usa o
+pré-processamento vencedor da Seção~\ref{sec:prep} e $k_1 = 1{,}2$,
+$b = 0{,}75$.
+
+\textbf{Verificação da implementação.} Uma versão ingênua em Python puro,
+escrita com laços diretamente a partir das fórmulas, reproduz os scores da
+versão vetorizada em SciPy com tolerância $10^{-10}$, para os dois modelos e
+três combinações de $(k_1, b)$. O modelo vetorial também foi comparado ao
+\texttt{TfidfVectorizer} do scikit-learn (correlação de Spearman $> 0{,}95$; não
+se espera igualdade exata porque o scikit-learn usa
+$\mathrm{idf} = \ln(N/\mathrm{df}) + 1$). São 16 testes, em
+\texttt{tests/test\_ir\_tp1.py}.
+
+% ---------------------------------------------------------------------
+\section{Resultados Obtidos e Análise}
+
+\subsection{Pré-processamento}
+\label{sec:prep}
+
+O ganho é monotônico nas quatro configurações e vale para os dois modelos
+(Tabela~\ref{tab:prep} e Figura~\ref{fig:prep}): o MAP do BM25 sobe de 0,269
+(linha de base) para 0,283 com stopwords, 0,295 com stemming e 0,305 com ambos,
+ganho total de 13,2\%. Os dois efeitos são complementares, e não redundantes,
+porque atacam problemas diferentes.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\cellalign}{bc}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\textbf{Configuração} & \textbf{$|V|$} & \makecell{\textbf{$|d|$}\\\textbf{méd.}} &
+\makecell{\textbf{MAP}\\\textbf{vet.}} & \makecell{\textbf{MAP}\\\textbf{BM25}} &
+\makecell{\textbf{P@10}\\\textbf{BM25}}\\
+\midrule
+sem stopw./sem stem. & 7044 & 159,1 & 0,243 & 0,269 & 0,216\\
+stopwords            & 6925 &  92,1 & 0,250 & 0,283 & 0,226\\
+stemming             & 4403 & 159,1 & 0,262 & 0,295 & 0,226\\
+\textbf{stopwords + stem.} & \textbf{4292} & \textbf{92,1} &
+\textbf{0,276} & \textbf{0,305} & \textbf{0,234}\\
+\bottomrule
+\end{tabular}
+\caption{Efeito do pré-processamento. $|V|$ é o tamanho do vocabulário e
+$|d|$ méd. o comprimento médio dos documentos em tokens.}
+\label{tab:prep}
+\end{table}
+
+A Tabela~\ref{tab:prep} deixa o mecanismo visível. A remoção de stopwords quase não altera o
+vocabulário (7044 $\to$ 6925 termos, pois a lista tem só 198 formas) mas elimina
+42\% de todos os tokens (comprimento médio 159,1 $\to$ 92,1): o efeito é sobre o
+denominador das normalizações, já que a norma do cosseno e o
+$|d|/\mathrm{avgdl}$ do BM25 deixam de ser dominados por palavras sem poder
+discriminativo. Já o stemming não remove token algum, mas funde formas
+flexionadas e reduz o vocabulário em 38\% (7044 $\to$ 4403): o efeito é sobre a
+cobertura do casamento léxico, permitindo que uma consulta com
+\texttt{solutions} case com um documento que diz \texttt{solution}. Como um ataca
+a normalização e o outro a cobertura, somam-se. Vale notar que o stemming
+sozinho (0,295) supera as stopwords sozinhas (0,283), o que é coerente com uma
+coleção de textos científicos, onde a variação morfológica é intensa. Todos os
+resultados seguintes usam a configuração vencedora (stop + stem).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig1b_preprocessamento_compacto.png}
+\caption{MAP e P@10 nas quatro configurações de pré-processamento.}
+\label{fig:prep}
+\end{figure}
+
+\subsection{Comparação entre os modelos}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+\textbf{Modelo} & \textbf{P@10} & \textbf{R@10} & \textbf{F1@10} &
+\textbf{MAP} & \textbf{MRR} & \textbf{NDCG@10}\\
+\midrule
+Vetorial & 0,217 & 0,378 & 0,249 & 0,276 & 0,487 & 0,326\\
+\textbf{BM25} & \textbf{0,234} & \textbf{0,398} & \textbf{0,266} &
+\textbf{0,305} & \textbf{0,539} & \textbf{0,355}\\
+$\Delta$ relativo & +8,0\% & +5,0\% & +7,0\% & +10,3\% & +10,7\% & +8,7\%\\
+\bottomrule
+\end{tabular}
+\caption{Métricas agregadas sobre as 225 consultas.}
+\label{tab:models}
+\end{table}
+
+A Tabela~\ref{tab:models} mostra que o BM25 é superior em todas as métricas, com
+vantagem maior no MRR (+10,7\%) e no
+MAP (+10,3\%), ou seja, ganha sobretudo no topo do ranking. A curva
+precisão-revocação (Figura~\ref{fig:pr}) mostra que a vantagem se mantém em
+todos os 11 níveis de revocação, e não apenas em média.
+
+A média, porém, esconde o essencial: o BM25 vence em 137 consultas, perde em 81
+e empata em 7. A dispersão da Figura~\ref{fig:ap} confirma que há um número
+expressivo de consultas abaixo da diagonal. A pergunta interessante não é qual
+modelo tem a maior média, mas o que separa as consultas dos dois grupos.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures/fig3_curva_precisao_revocacao.png}
+\caption{Curva precisão $\times$ revocação interpolada em 11 pontos.}
+\label{fig:pr}
+\end{figure}
+
+\subsection{Análise por consulta}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{@{}p{1.15cm}ll ccccc r@{}}
+\toprule
+\textbf{Caso} & \textbf{Q} & \textbf{Mod} &
+\textbf{1\textsuperscript{o}} & \textbf{2\textsuperscript{o}} &
+\textbf{3\textsuperscript{o}} & \textbf{4\textsuperscript{o}} &
+\textbf{5\textsuperscript{o}} & \textbf{AP}\\
+\midrule
+BM25 $>$ vet. & q223 & vet. & 1008 & 864 & 1399 & \rel{400} & 1359 & 0,19\\
+              &      & BM25 & 1399 & \rel{400} & \rel{1398} & 419 & \rel{1387} & 0,46\\
+\addlinespace[1pt]
+BM25 $>$ vet. & q59  & vet. & 382 & 383 & 842 & \rel{786} & 1154 & 0,11\\
+              &      & BM25 & \rel{785} & 381 & 1154 & 149 & \rel{786} & 0,37\\
+\addlinespace[1pt]
+vet. $>$ BM25 & q113 & vet. & \rel{265} & \rel{748} & 594 & 1272 & 716 & 0,51\\
+              &      & BM25 & 704 & 815 & \rel{748} & 638 & 708 & 0,15\\
+\addlinespace[1pt]
+vet. $>$ BM25 & q190 & vet. & \rel{390} & \rel{391} & 1008 & \rel{15} & 627 & 0,72\\
+              &      & BM25 & \rel{390} & 627 & 856 & 1339 & \rel{15} & 0,38\\
+\addlinespace[1pt]
+ambos ruins   & q124 & vet. & 941 & 898 & 938 & 1070 & 516 & 0,00\\
+              &      & BM25 & 941 & 516 & 898 & 442 & 934 & 0,00\\
+\addlinespace[1pt]
+ambos ruins   & q13  & vet. & 496 & 903 & 520 & 643 & 313 & 0,01\\
+              &      & BM25 & 496 & 903 & 520 & 313 & 440 & 0,01\\
+\bottomrule
+\end{tabular}
+\caption{Top-5 de cada modelo nas seis consultas selecionadas. Identificadores
+de documento; \textbf{negrito}$^{\bullet}$ = relevante (grau $\geq 1$).}
+\label{tab:queries}
+\end{table}
+
+A seleção é automática: entre as consultas com ao menos 4 relevantes, as duas de
+maior e menor $\Delta$AP e as duas de menor AP médio. Lendo os Top-5 da
+Tabela~\ref{tab:queries} lado a lado, aparece um padrão nítido, e é um padrão de
+comprimento de documento.
+
+\textbf{(i) BM25 claramente superior: q223 e q59.} Em q223 (\textit{shear
+buckling of unstiffened rectangular plates}), o modelo vetorial coloca no topo os
+documentos 1008 (51 tokens) e 864 (29 tokens), ambos irrelevantes e muito
+curtos, e só encontra um relevante na 4\textsuperscript{a} posição. O BM25
+recupera na 3\textsuperscript{a} e 5\textsuperscript{a} posições os documentos
+1398 (115 tokens) e 1387 (120 tokens), ambos relevantes e longos. A causa é a
+normalização: o cosseno divide pela norma completa do vetor, o que penaliza
+integralmente um documento longo, mesmo quando o comprimento vem de tratar o
+assunto com profundidade; o BM25 com $b = 0{,}75$ normaliza apenas parcialmente.
+Em q59 ocorre o mesmo: o vetorial promove o documento 382 (21 tokens) e o BM25
+encontra o relevante 785 já na 1\textsuperscript{a} posição.
+
+\textbf{(ii) Modelo vetorial superior: q113 e q190.} O mecanismo é o mesmo, com
+o sinal trocado. Em q113 o BM25 traz para o topo os documentos 704 (185 tokens),
+815 (142) e 638 (138), todos longos e todos irrelevantes, enquanto o vetorial
+acerta as duas primeiras posições com os documentos 265 (49 tokens) e 748 (83).
+Aqui os relevantes são curtos e específicos, e a normalização integral do cosseno
+é exatamente o que se quer. Em q190 o vetorial coloca três relevantes no Top-4 e
+o BM25 intercala os documentos 856 (137) e 1339 (130), não relevantes. Em outras
+palavras: a normalização parcial do BM25 é uma aposta, que paga bem quando os
+relevantes são longos e custa caro quando são curtos.
+
+\textbf{(iii) Ambos insatisfatórios: q124 e q13.} Estas revelam limitações que
+nenhum ajuste de ranqueamento resolve. A q13 (\textit{what is the basic mechanism
+of the transonic aileron buzz}) tem, na 1\textsuperscript{a} posição de ambos os
+modelos, o documento 496, ``\textit{a theory of transonic aileron buzz,
+neglecting viscous effects}''. O casamento léxico é quase perfeito, e mesmo assim
+o julgamento é $-1$, isto é, não relevante. A q124 é uma consulta composta, com
+duas necessidades de informação distintas (escoamento em canais delgados e
+estabilidade de cascas cônicas); o documento 941, cujo título praticamente repete
+a primeira metade da consulta, também é julgado $-1$. Ou seja, o erro não está no
+ranqueamento, mas no descompasso entre sobreposição léxica e relevância julgada:
+o avaliador julgou contra a necessidade real, que os modelos não enxergam.
+
+\subsection{Verificando a hipótese do comprimento}
+\label{sec:hip}
+
+A leitura acima é uma hipótese construída sobre seis consultas. Testamo-la sobre
+as 225. Se a normalização for mesmo o mecanismo dominante, então (a) o Top-10 do
+BM25 deve ser em média mais longo que o do vetorial e (b) o BM25 deve levar
+vantagem justamente nas consultas cujos relevantes são longos.
+
+Ambas se confirmam. O comprimento médio da coleção é 92,1 tokens e o dos
+documentos relevantes é 92,5, praticamente idêntico, ou seja, ser longo não torna
+um documento relevante. Ainda assim, o Top-10 do modelo vetorial tem em média
+79,4 tokens (bem abaixo da média da coleção) e o do BM25, 98,4 (acima). O
+vetorial tem, portanto, \textbf{um viés sistemático para documentos curtos que
+não é justificado pelos dados}. E a correlação de Spearman entre $\Delta$AP
+(BM25 $-$ vetorial) e o comprimento médio dos relevantes de cada consulta é
+$\rho = 0{,}432$ ($p \approx 1\times10^{-11}$, $n = 225$). A hipótese levantada a
+partir de seis exemplos resiste, portanto, a um teste sobre a coleção inteira.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\linewidth]{figures/fig5_ap_por_consulta.png}
+\caption{AP por consulta. Pontos acima da diagonal favorecem o BM25.}
+\label{fig:ap}
+\end{figure}
+
+\subsection{Variação dos parâmetros do BM25}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\cellalign}{bc}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\textbf{$k_1 \backslash b$} & \makecell{\textbf{0}\\\textbf{(MAP)}} &
+\makecell{\textbf{0,75}\\\textbf{(MAP)}} & \makecell{\textbf{1}\\\textbf{(MAP)}} &
+\makecell{\textbf{0,75}\\\textbf{(P@10)}} & \makecell{\textbf{0,75}\\\textbf{(NDCG)}}\\
+\midrule
+0,5 & 0,268 & 0,291 & 0,294 & 0,221 & 0,338\\
+1,2 & 0,277 & 0,305 & 0,306 & 0,234 & 0,355\\
+2,0 & 0,281 & \textbf{0,312} & 0,308 & 0,241 & 0,363\\
+\bottomrule
+\end{tabular}
+\caption{Grade $k_1 \times b$. As três últimas colunas fixam $b = 0{,}75$.}
+\label{tab:grid}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\linewidth]{figures/fig4_bm25_grade_MAP.png}
+\caption{MAP do BM25 na grade de parâmetros. A cor codifica a magnitude; o valor
+está impresso em cada célula.}
+\label{fig:grid}
+\end{figure}
+
+O melhor ponto da grade (Tabela~\ref{tab:grid} e Figura~\ref{fig:grid}) é
+$k_1 = 2{,}0$, $b = 0{,}75$, com MAP 0,312 e P@10 0,241. O resultado mais claro é que \textbf{$b$ importa muito mais que $k_1$}:
+fixado $k_1$, passar de $b = 0$ para $b = 0{,}75$ melhora o MAP entre 8,6\% e
+10,8\%, enquanto variar $k_1$ de 0,5 a 2,0 com $b$ fixo rende no máximo 7\%.
+Coerente com a Seção~\ref{sec:hip}, a normalização por comprimento é o fator
+dominante nesta coleção. Também há interação entre os parâmetros: para $k_1$
+pequeno (0,5 e 1,2) o melhor $b$ é 1,0, mas para $k_1 = 2{,}0$ o melhor é 0,75. A
+leitura é que $k_1$ alto deixa o score mais sensível à frequência bruta, e aí uma
+normalização total ($b = 1$) passa a penalizar demais documentos longos que
+acumulam ocorrências legítimas; um pouco de folga ($b = 0{,}75$) compensa.
+
+\textbf{Efeito de $b$ em uma consulta concreta.} A q67 (``\textit{can series
+expansions be found for the boundary layer on a flat plate in a\dots}'', 14
+relevantes) é o caso mais didático.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccc r@{}}
+\toprule
+\textbf{$b$} & \textbf{1\textsuperscript{o}} & \textbf{2\textsuperscript{o}} &
+\textbf{3\textsuperscript{o}} & \textbf{4\textsuperscript{o}} &
+\textbf{5\textsuperscript{o}} & \textbf{AP}\\
+\midrule
+0,0  & 9 & 72 & 1107 & 155 & \rel{2} & 0,14\\
+0,75 & \rel{393} & \rel{180} & \rel{4} & \rel{3} & 306 & 0,49\\
+1,0  & \rel{3} & \rel{393} & \rel{180} & \rel{4} & \rel{664} & 0,55\\
+\bottomrule
+\end{tabular}
+\caption{Top-5 da consulta q67 para três valores de $b$ ($k_1 = 1{,}2$).}
+\label{tab:beffect}
+\end{table}
+
+A Tabela~\ref{tab:beffect} traz os três rankings. Com $b = 0$ não há
+normalização alguma e o Top-5 é tomado por documentos de 177,
+164, 138, 130 e 116 tokens, dos quais apenas o último é relevante: sem
+normalização, o score cresce com o tamanho, pois documentos longos simplesmente
+acumulam mais ocorrências dos termos da consulta. Com $b = 0{,}75$ o ranking se
+inverte por completo, e os cinco primeiros passam a ter 34, 36, 47, 17 e 91
+tokens, sendo quatro deles relevantes. Com $b = 1$ os cinco são relevantes e a AP
+vai de 0,14 para 0,55. Os documentos relevantes desta consulta são artigos curtos
+e diretamente sobre o tema (``\textit{the boundary layer in simple shear flow
+past a flat plate}'', 17 tokens); sem normalização eles são esmagados por textos
+longos que mencionam os mesmos termos de passagem.
+
+\subsection{Reformulação de consultas}
+\label{sec:reform}
+
+Cinco consultas foram reescritas manualmente, cada uma com uma operação diferente
+e com a hipótese registrada no código antes de rodar os modelos. As duas versões
+de cada consulta foram executadas com os dois modelos, e a
+Tabela~\ref{tab:reform} resume as mudanças no Top-10: as colunas P@10 medem
+diretamente quantos relevantes entraram ou saíram dessa faixa, e o NDCG@10
+acrescenta o efeito de reordenação dentro dela. O Top-10 completo das dez
+execuções está em \texttt{results/05\_query\_reformulation\_detail.json}.
+
+\begin{table*}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{9pt}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+\textbf{Cons.} & \textbf{Operação} & \textbf{AP vetorial} & \textbf{P@10 vetorial} &
+\textbf{AP BM25} & \textbf{P@10 BM25} & \textbf{NDCG@10 BM25}\\
+\midrule
+q219 & sinônimo              & 0,04 $\to$ 0,12 & 0,00 $\to$ 0,10 & 0,04 $\to$ 0,09 & 0,00 $\to$ 0,10 & 0,00 $\to$ 0,09\\
+q69  & + específica          & 0,02 $\to$ 0,05 & 0,00 $\to$ 0,00 & 0,04 $\to$ 0,09 & 0,00 $\to$ 0,10 & 0,00 $\to$ 0,17\\
+q109 & + específica (curta)  & 0,03 $\to$ 0,04 & 0,00 $\to$ 0,00 & 0,04 $\to$ 0,06 & 0,00 $\to$ 0,10 & 0,00 $\to$ 0,03\\
+q171 & $-$ termos            & 0,31 $\to$ 0,32 & 0,30 $\to$ 0,30 & 0,64 $\to$ 0,56 & 0,30 $\to$ 0,30 & 0,66 $\to$ 0,61\\
+q15  & vocabulário           & 0,62 $\to$ 0,58 & 0,20 $\to$ 0,20 & 1,00 $\to$ 1,00 & 0,20 $\to$ 0,20 & 0,74 $\to$ 1,00\\
+\bottomrule
+\end{tabular}
+\caption{Efeito das reformulações no Top-10 (original $\to$ modificada).}
+\label{tab:reform}
+\end{table*}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\cellalign}{bc}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Pos.} & \makecell{\textbf{Vetorial}\\\textbf{original}} &
+\makecell{\textbf{Vetorial}\\\textbf{modificada}} &
+\makecell{\textbf{BM25}\\\textbf{original}} &
+\makecell{\textbf{BM25}\\\textbf{modificada}}\\
+\midrule
+1  & 1221 & 670        & 1221 & 315\\
+2  & 1222 & \rel{666}  & 208  & 1221\\
+3  & 208  & 537        & 1222 & 993\\
+4  & 299  & 238        & 992  & \rel{666}\\
+5  & 993  & 668        & 993  & 1082\\
+6  & 664  & 535        & 299  & 371\\
+7  & 530  & 1221       & 371  & 139\\
+8  & 228  & 139        & 530  & 208\\
+9  & 971  & 993        & 7    & 9\\
+10 & 197  & 1222       & 1309 & 710\\
+\bottomrule
+\end{tabular}
+\caption{Top-10 da consulta q219 antes e depois da troca de \texttt{small} por
+\texttt{low}. \textbf{Negrito}$^{\bullet}$ = relevante (grau $\geq 1$).}
+\label{tab:top10reform}
+\end{table}
+
+\textbf{q219, sinônimo.} O caso mais limpo. A consulta original diz
+``\textit{\dots when the reynolds number is small}'', mas a literatura consagrou
+a expressão ``\textit{low Reynolds number}''. Trocando uma única palavra,
+\texttt{small} por \texttt{low}, a AP do vetorial vai de 0,045 para 0,119 e a do
+BM25 de 0,037 para 0,093, e a P@10, que era zero nos dois modelos, passa a 0,10.
+A Tabela~\ref{tab:top10reform} mostra o efeito no Top-10: na versão original,
+nenhuma das dez posições traz um relevante nos dois modelos, e as listas são
+quase as mesmas (1221, 1222, 208, 299, 993 e 530 aparecem em ambas); na versão
+modificada o documento 666 (grau 2) entra em 2\textsuperscript{o} no vetorial e
+em 4\textsuperscript{o} no BM25, com sete das dez posições renovadas no vetorial
+e seis no BM25. Nada
+mudou no significado da pergunta; mudou apenas o vocabulário. É a ilustração
+mais direta da limitação apontada na Aula 04: modelos puramente léxicos não
+enxergam sinonímia.
+
+\textbf{q69 e q109, tornar mais específica.} Ambas confirmam a hipótese, com
+ganho modesto. Em q69 os termos originais são todos pouco discriminativos
+(\texttt{solution}, \texttt{boundary}, \texttt{layer} e \texttt{equation} ocorrem
+em 400 a 470 dos 1400 documentos); acrescentar \texttt{series}, \texttt{laminar}
+e \texttt{compressible} leva a AP do BM25 de 0,039 a 0,092 e a R@10 de 0 a 0,20.
+Em q109, uma consulta de apenas 4 tokens, explicitar a consequência física
+(tensão térmica, flambagem, flutter) leva a P@10 de 0 a 0,10.
+
+\textbf{q171, remover termos: hipótese parcialmente refutada.} Prevíamos que
+enxugar a consulta de 17 tokens beneficiaria sobretudo o modelo vetorial,
+prejudicado pela diluição da norma. O vetorial de fato melhorou um pouco
+(0,306 $\to$ 0,319), mas o BM25 piorou (0,639 $\to$ 0,556). A explicação é que o
+BM25 não normaliza o vetor de consulta: termos adicionais só somam evidência, e
+mesmo termos de IDF baixo contribuem positivamente quando presentes. Remover
+termos, para o BM25, é descartar evidência sem contrapartida, o que revela uma
+assimetria entre os modelos que não havíamos previsto.
+
+\textbf{q15, vocabulário técnico e o valor da métrica graduada.} O termo
+\texttt{photoelastic} ocorre em um único documento, mas os dois relevantes usam
+\texttt{photo-thermoelastic}, que o tokenizador quebra em \texttt{photo} e
+\texttt{thermoelast}, e o stemming não aproxima essas formas. Adotando o termo
+dos autores, a AP do BM25 não muda (1,00 $\to$ 1,00), porque os dois relevantes
+já estavam no topo; mas o NDCG@10 sobe de 0,74 para 1,00, pois a reformulação
+reordenou os dois relevantes, trazendo para a 1\textsuperscript{a} posição o de
+grau 1 (``resposta completa''). É um bom argumento a favor de reportar métricas
+graduadas: a AP é cega a uma melhora que o usuário perceberia.
+
+\subsection{Análise de erros}
+
+\textbf{Falsos positivos.} Escolhemos documentos não relevantes trazidos pelo
+BM25 para as duas primeiras posições. (1) Na q98, o documento 638
+(``\textit{longitudinal aerodynamic characteristics at low subsonic speeds of a
+highly swept wing utilizing nose flaps}'', grau $-1$) aparece em
+1\textsuperscript{o} com score 35,1. A decomposição do score mostra de onde ele
+vem: \texttt{flap} ($+6{,}74$), \texttt{control} ($+5{,}70$), \texttt{trail}
+($+4{,}87$), \texttt{subson} ($+3{,}03$). Todos os termos da consulta estão lá,
+mas a consulta pergunta se controles na ponta se comparam a flaps de bordo de
+fuga, e o documento trata de flaps de nariz. É a hipótese de independência entre
+termos falhando: o modelo soma evidências isoladas e não percebe que a consulta
+pede uma relação entre elas. (2) Na q124, o documento 941 tem título quase
+idêntico a metade da consulta e recebe $+8{,}40$ só de \texttt{channel}
+($n = 17$, IDF altíssimo), mas é julgado $-1$, porque a necessidade real de
+informação está na outra metade da consulta. (3) Um terceiro caso, na q139, é de
+outra natureza: os documentos 847 e 897 estão em 1\textsuperscript{o} e
+2\textsuperscript{o} e parecem genuinamente pertinentes, mas simplesmente não
+foram julgados. Como o enunciado manda tratar não julgados como não relevantes,
+eles contam como erro, o que é, na verdade, uma limitação de cobertura dos qrels
+do Cranfield, não do sistema.
+
+\textbf{Falso negativo.} Na q80 (``\textit{are methods of measuring aerodynamic
+derivatives available which could be adopted for use in short running time
+facilities}''), o documento 596 tem grau 3 e aparece na posição 1206 em ambos os
+modelos. O motivo é categórico: a interseção entre os tokens da consulta e os do
+documento é vazia. O documento se chama ``\textit{the properties of crossed
+flexure pivots\dots}'' e descreve o aparato usado na medição, enquanto a consulta
+descreve o método e a finalidade. Score zero não é um erro de ponderação: é o
+limite do casamento léxico. Nenhum ajuste de $k_1$, $b$ ou pré-processamento
+recupera esse documento; seria preciso representação semântica (embeddings) ou
+expansão de consulta. Os outros dois falsos negativos que examinamos têm a mesma
+assinatura: no documento 236 da q87 (grau 4), o único termo casado é
+\texttt{flow}, o de menor IDF da consulta ($n = 730$ de 1400).
+
+% ---------------------------------------------------------------------
+\section{Considerações finais}
+
+\begin{enumerate}\setlength{\itemsep}{2pt}
+\item \textbf{O pré-processamento é barato e vale a pena.} Stopwords e stemming
+juntos elevam o MAP do BM25 em 13,2\%, e são complementares porque atacam frentes
+distintas: um corrige o denominador das normalizações, o outro amplia a cobertura
+do casamento léxico.
+
+\item \textbf{O BM25 vence, mas não por ser ``melhor'' em abstrato.} Ele supera o
+vetorial em todas as métricas (MAP +10,3\%) e em todos os níveis de revocação,
+mas perde em 81 das 225 consultas. A diferença é governada pela normalização por
+comprimento: o cosseno normaliza integralmente e adquire um viés para documentos
+curtos (Top-10 médio de 79,4 tokens contra 92,1 da coleção), enquanto o BM25
+normaliza parcialmente. Confirmamos isso com $\rho = 0{,}43$ entre $\Delta$AP e o
+comprimento dos relevantes.
+
+\item \textbf{$b$ importa mais que $k_1$}, e os dois interagem: o melhor $b$ cai
+de 1,0 para 0,75 quando $k_1$ cresce de 1,2 para 2,0.
+
+\item \textbf{O teto dos dois modelos é léxico.} As consultas em que ambos falham
+não falham por ranqueamento: ou o documento relevante não compartilha nenhum
+termo com a consulta, ou a consulta é composta, ou o julgamento não acompanha a
+sobreposição léxica. Trocar ``\textit{small}'' por ``\textit{low}'' em q219 quase
+triplicou a AP, um ganho que nenhum ajuste de parâmetro produziria. É exatamente
+onde entram expansão de consulta e representações densas.
+
+\item \textbf{A escolha da métrica muda o diagnóstico.} A AP não viu a melhora da
+reformulação de q15, que o NDCG@10 registrou (0,74 $\to$ 1,00); e o NDCG varia
+17\% conforme se corrija ou não a escala invertida do Cranfield. Decisões de
+avaliação merecem tanta atenção quanto decisões de modelagem.
+\end{enumerate}
+
+% ---------------------------------------------------------------------
+\section{Uso de ferramentas de IA}
+
+Ferramentas de IA generativa (Claude) foram utilizadas como apoio nas seguintes
+atividades: (i) \textbf{apoio à programação}, na estruturação dos módulos, na
+vetorização com matrizes esparsas e na escrita dos testes automatizados; (ii)
+\textbf{depuração}, no diagnóstico de uma instalação corrompida do SciPy causada
+pelo limite de 260 caracteres de caminho do Windows e na identificação do
+desalinhamento entre os identificadores \texttt{.I} das consultas e a numeração
+do \texttt{cranqrel}; (iii) \textbf{explicação de conceitos}, na discussão das
+variantes de IDF do BM25 e das convenções de ganho do NDCG; e (iv)
+\textbf{correção ortográfica} deste relatório. As fórmulas, as decisões de
+implementação, o desenho dos experimentos, as reformulações manuais de consulta e
+a interpretação dos resultados foram revisados e são de responsabilidade dos
+autores, que compreendem integralmente o código entregue.
+
+% ---------------------------------------------------------------------
+\begin{thebibliography}{9}
+\footnotesize
+\bibitem{manning}
+MANNING, C. D.; RAGHAVAN, P.; SCHÜTZE, H.
+\textit{Introduction to Information Retrieval}.
+Cambridge University Press, 2008.
+
+\bibitem{robertson}
+ROBERTSON, S.; ZARAGOZA, H.
+\textit{The Probabilistic Relevance Framework: BM25 and Beyond}.
+Foundations and Trends in IR, 2009.
+
+\bibitem{salton}
+SALTON, G.; WONG, A.; YANG, C. S.
+A Vector Space Model for Automatic Indexing.
+\textit{Communications of the ACM}, v. 18, n. 11, 1975.
+
+\bibitem{cleverdon}
+CLEVERDON, C. W.
+The Cranfield tests on index language devices.
+\textit{Aslib Proceedings}, 1967.
+
+\bibitem{jarvelin}
+JÄRVELIN, K.; KEKÄLÄINEN, J.
+Cumulated Gain-based Evaluation of IR Techniques.
+\textit{ACM TOIS}, v. 20, n. 4, 2002.
+\end{thebibliography}
+
+\end{document}

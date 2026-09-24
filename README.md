@@ -13,12 +13,10 @@ ICMC / USP — 2º semestre de 2026 — Prof. Marcelo G. Manzato
 
 | Nome completo | Nº USP | E-mail |
 |---|---|---|
-| `<NOME COMPLETO>` | `<Nº USP>` | `<email@usp.br>` |
-| `<NOME COMPLETO>` | `<Nº USP>` | `<email@usp.br>` |
-| `<NOME COMPLETO>` | `<Nº USP>` | `<email@usp.br>` |
+| Victor Silva Botelho | 15645421 | victorbotelho@usp.br |
+| João Pedro Barbosa Madeira | 13683038 | Joaopedro08madeira@gmail.com |
 
-> **Preencher antes da entrega.** Os mesmos nomes devem constar no cabeçalho
-> de `report/relatorio.pdf` (a fonte está em `report/build_report.py`).
+Os mesmos dados constam na capa do relatório (`report/relatorio.tex`).
 
 ---
 
