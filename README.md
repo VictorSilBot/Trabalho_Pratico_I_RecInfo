@@ -152,8 +152,7 @@ relevância).
 │   ├── experiments.py             # todos os experimentos (req. 1–9)
 │   └── plots.py                   # figuras
 ├── tests/test_ir_tp1.py           # 16 testes de correção
-├── report/
-│   ├── build_report.py            # gera o PDF
+├── report/ 
 │   └── relatorio.pdf              # relatório final (6 páginas)
 ├── data/cran/                     # coleção (baixada automaticamente)
 ├── results/                       # todos os resultados (CSV + JSON)
