@@ -1,0 +1,143 @@
+{
+  "query_id": 67,
+  "query_text": "can series expansions be found for the boundary layer on a flat plate in a shear flow .",
+  "num_relevant": 14,
+  "k1": 1.2,
+  "rankings": {
+    "b=0.0": {
+      "top5": [
+        {
+          "position": 1,
+          "doc_id": 9,
+          "grade": "não julgado",
+          "relevant": false,
+          "title": "transition studies and skin friction measurements on an insulated flat plate at a mach number of 5.8 .",
+          "length_tokens": 177
+        },
+        {
+          "position": 2,
+          "doc_id": 72,
+          "grade": "não julgado",
+          "relevant": false,
+          "title": "boundary layer behind shock or thin expansion wave moving into stationary fluid .",
+          "length_tokens": 164
+        },
+        {
+          "position": 3,
+          "doc_id": 1107,
+          "grade": "não julgado",
+          "relevant": false,
+          "title": "the flow field over blunted flat plates and its effect on turbulent boundary growth and heat transfer at a mach number of 4. 7.",
+          "length_tokens": 138
+        },
+        {
+          "position": 4,
+          "doc_id": 155,
+          "grade": "não julgado",
+          "relevant": false,
+          "title": "on the solution of the laminar boundary layer equations .",
+          "length_tokens": 130
+        },
+        {
+          "position": 5,
+          "doc_id": 2,
+          "grade": 1,
+          "relevant": true,
+          "title": "simple shear flow past a flat plate in an incompressible fluid of small viscosity .",
+          "length_tokens": 116
+        }
+      ],
+      "AP": 0.13559906911661054
+    },
+    "b=0.75": {
+      "top5": [
+        {
+          "position": 1,
+          "doc_id": 393,
+          "grade": 3,
+          "relevant": true,
+          "title": "the shear flow along a flat plate with uniform suction .",
+          "length_tokens": 34
+        },
+        {
+          "position": 2,
+          "doc_id": 180,
+          "grade": 1,
+          "relevant": true,
+          "title": "boundary layer over a flat plate in presence of shear flow .",
+          "length_tokens": 36
+        },
+        {
+          "position": 3,
+          "doc_id": 4,
+          "grade": 3,
+          "relevant": true,
+          "title": "approximate solutions of the incompressible laminar boundary layer equations for a plate in shear flow .",
+          "length_tokens": 47
+        },
+        {
+          "position": 4,
+          "doc_id": 3,
+          "grade": 1,
+          "relevant": true,
+          "title": "the boundary layer in simple shear flow past a flat plate .",
+          "length_tokens": 17
+        },
+        {
+          "position": 5,
+          "doc_id": 306,
+          "grade": "não julgado",
+          "relevant": false,
+          "title": "second approximation to laminar compressible boundary layer on flat plate in slip flow .",
+          "length_tokens": 91
+        }
+      ],
+      "AP": 0.49310618812379114
+    },
+    "b=1.0": {
+      "top5": [
+        {
+          "position": 1,
+          "doc_id": 3,
+          "grade": 1,
+          "relevant": true,
+          "title": "the boundary layer in simple shear flow past a flat plate .",
+          "length_tokens": 17
+        },
+        {
+          "position": 2,
+          "doc_id": 393,
+          "grade": 3,
+          "relevant": true,
+          "title": "the shear flow along a flat plate with uniform suction .",
+          "length_tokens": 34
+        },
+        {
+          "position": 3,
+          "doc_id": 180,
+          "grade": 1,
+          "relevant": true,
+          "title": "boundary layer over a flat plate in presence of shear flow .",
+          "length_tokens": 36
+        },
+        {
+          "position": 4,
+          "doc_id": 4,
+          "grade": 3,
+          "relevant": true,
+          "title": "approximate solutions of the incompressible laminar boundary layer equations for a plate in shear flow .",
+          "length_tokens": 47
+        },
+        {
+          "position": 5,
+          "doc_id": 664,
+          "grade": 2,
+          "relevant": true,
+          "title": "the boundary layer on a flat plate in a stream with uniform shear .",
+          "length_tokens": 44
+        }
+      ],
+      "AP": 0.545380207437676
+    }
+  }
+}

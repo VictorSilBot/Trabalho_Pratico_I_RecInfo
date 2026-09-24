@@ -1,0 +1,61 @@
+categoria,query_id,modelo,position,doc_id,grade,relevant,title,length_tokens
+bm25_superior,223,VSM,1,1008,não julgado,False,free-flight measurements of the static and dynamic .,51
+bm25_superior,223,VSM,2,864,não julgado,False,status of flutter of flat and curved panels .,29
+bm25_superior,223,VSM,3,1399,não julgado,False,buckling of transverse stiffened plates under shear .,46
+bm25_superior,223,VSM,4,400,3,True,buckling stress of clamped rectangular plates in shear .,41
+bm25_superior,223,VSM,5,1359,não julgado,False,compression tests on circular cylinders stiffened longitudinally by closely spaced z-section stringers .,49
+bm25_superior,223,BM25,1,1399,não julgado,False,buckling of transverse stiffened plates under shear .,46
+bm25_superior,223,BM25,2,400,3,True,buckling stress of clamped rectangular plates in shear .,41
+bm25_superior,223,BM25,3,1398,3,True,stability of rectangular plates under shear and bending forces .,115
+bm25_superior,223,BM25,4,419,não julgado,False,the design of intermediate vertical stiffeners on web plates subjected to shear .,72
+bm25_superior,223,BM25,5,1387,3,True,"the buckling of a square panel under shear, when one pair of opposite edges is clamped and the other pair is simply supported .",120
+bm25_superior,59,VSM,1,382,não julgado,False,a note on the laminar boundary layer on a circular cylinder in axial incompressible flow .,21
+bm25_superior,59,VSM,2,383,não julgado,False,integration of the boundary layer equations for a plane in compressible flow with heat transfer .,67
+bm25_superior,59,VSM,3,842,não julgado,False,an improvement on donnell's approximation for thin-walled circular cylinders .,38
+bm25_superior,59,VSM,4,786,3,True,the skin friction on infinite cylinders moving parallell to their length .,104
+bm25_superior,59,VSM,5,1154,não julgado,False,on the influence of wall boundary layers in closed transonic test sections .,145
+bm25_superior,59,BM25,1,785,3,True,the flow of fluid along cylinders .,76
+bm25_superior,59,BM25,2,381,não julgado,False,the axisymmetric boundary layer on a long thin cylinder .,128
+bm25_superior,59,BM25,3,1154,não julgado,False,on the influence of wall boundary layers in closed transonic test sections .,145
+bm25_superior,59,BM25,4,149,não julgado,False,expansions at small reynolds number for the flow past a sphere and a circular cylinder .,149
+bm25_superior,59,BM25,5,786,3,True,the skin friction on infinite cylinders moving parallell to their length .,104
+vsm_superior,113,VSM,1,265,3,True,some instabilities arising from the interaction between shock waves and boundary layer .,49
+vsm_superior,113,VSM,2,748,3,True,"subsonic aerodynamic flutter derivatives for wings and control surfaces, /compressible and incompressible flow/ .",83
+vsm_superior,113,VSM,3,594,não julgado,False,wind tunnel techniques for the measurements of oscillatory derivatives .,36
+vsm_superior,113,VSM,4,1272,não julgado,False,oscillatory aerodynamic coefficients for a unified supersonic hypersonic strip theory .,61
+vsm_superior,113,VSM,5,716,não julgado,False,study of the oscillatory motion of manned vehicles entering the earth's atmosphere .,50
+vsm_superior,113,BM25,1,704,não julgado,False,a systematic kernel function procedure for determining aerodynamic forces on oscillating or steady finite wings at subsonic speeds .,185
+vsm_superior,113,BM25,2,815,não julgado,False,investigation of several blunt bodies to determine trans- onic aerodynamic characteristics including effects of spinning and of extendible afterbody flaps and some measurements of unsteady base pressures .,142
+vsm_superior,113,BM25,3,748,3,True,"subsonic aerodynamic flutter derivatives for wings and control surfaces, /compressible and incompressible flow/ .",83
+vsm_superior,113,BM25,4,638,não julgado,False,longitudinal aerodynamic characteristics at low subsonic speeds of a highly swept wing utilizing nose deflection for control .,138
+vsm_superior,113,BM25,5,708,não julgado,False,aerodynamic characteristics of two winged reentry vehicles at supersonic and hypersonic speeds .,36
+vsm_superior,190,VSM,1,390,3,True,some panel-flutter studies using piston theory .,75
+vsm_superior,190,VSM,2,391,1,True,flutter of rectangular simply supported panels at high supersonic speeds .,78
+vsm_superior,190,VSM,3,1008,não julgado,False,free-flight measurements of the static and dynamic .,51
+vsm_superior,190,VSM,4,15,1,True,on two-dimensional panel flutter .,74
+vsm_superior,190,VSM,5,627,não julgado,False,flutter analysis of circular panels .,85
+vsm_superior,190,BM25,1,390,3,True,some panel-flutter studies using piston theory .,75
+vsm_superior,190,BM25,2,627,não julgado,False,flutter analysis of circular panels .,85
+vsm_superior,190,BM25,3,856,não julgado,False,some experimental studies of panel flutter at mach 1 .3.,137
+vsm_superior,190,BM25,4,1339,não julgado,False,calculation of flutter characteristics for finite-span swept or unswept wings at subsonic and supersonic speeds by a modified strip analysis .,130
+vsm_superior,190,BM25,5,15,1,True,on two-dimensional panel flutter .,74
+ambos_insatisfatorios,124,VSM,1,941,-1,False,viscous compressible and incompressible flow in slender channels .,60
+ambos_insatisfatorios,124,VSM,2,898,não julgado,False,a survey of buckling theory and experiment for circular conical shells of constant thickness .,31
+ambos_insatisfatorios,124,VSM,3,938,não julgado,False,calculations for the stability of thin conical frustums subjected to external uniform hydrostatic pressure and axial loads .,38
+ambos_insatisfatorios,124,VSM,4,1070,não julgado,False,buckling of orthotropic and stiffened conical shells .,67
+ambos_insatisfatorios,124,VSM,5,516,não julgado,False,free-flight measurements of the dynamic longitudinal stability characteristics of a wind tunnel interference model (m=0 .92 to 1. 35) .,57
+ambos_insatisfatorios,124,BM25,1,941,-1,False,viscous compressible and incompressible flow in slender channels .,60
+ambos_insatisfatorios,124,BM25,2,516,não julgado,False,free-flight measurements of the dynamic longitudinal stability characteristics of a wind tunnel interference model (m=0 .92 to 1. 35) .,57
+ambos_insatisfatorios,124,BM25,3,898,não julgado,False,a survey of buckling theory and experiment for circular conical shells of constant thickness .,31
+ambos_insatisfatorios,124,BM25,4,442,não julgado,False,some effects of variations in several parameters including fluid density on the flutter speed of light uniform cantilever wings .,118
+ambos_insatisfatorios,124,BM25,5,934,não julgado,False,"stability of cylindrical and conical shells of circular cross section, with simultaneous action of axial compression and external normal pressure .",116
+ambos_insatisfatorios,13,VSM,1,496,-1,False,"a theory of transonic aileron buzz, neglecting viscous effects .",69
+ambos_insatisfatorios,13,VSM,2,903,não julgado,False,two dimensional transonic unsteady flow with shock waves .,120
+ambos_insatisfatorios,13,VSM,3,520,não julgado,False,wing-tail interference as a cause of 'magnus' effects on a finned missile .,133
+ambos_insatisfatorios,13,VSM,4,643,não julgado,False,an investigation of wing-aileron flutter using ground launched rocket models .,78
+ambos_insatisfatorios,13,VSM,5,313,não julgado,False,on alternative forms for the basic equations of transonic flow theory .,34
+ambos_insatisfatorios,13,BM25,1,496,-1,False,"a theory of transonic aileron buzz, neglecting viscous effects .",69
+ambos_insatisfatorios,13,BM25,2,903,não julgado,False,two dimensional transonic unsteady flow with shock waves .,120
+ambos_insatisfatorios,13,BM25,3,520,não julgado,False,wing-tail interference as a cause of 'magnus' effects on a finned missile .,133
+ambos_insatisfatorios,13,BM25,4,313,não julgado,False,on alternative forms for the basic equations of transonic flow theory .,34
+ambos_insatisfatorios,13,BM25,5,440,não julgado,False,compilation of information on the transonic attachment of flows at the leading edge of airfoils .,56

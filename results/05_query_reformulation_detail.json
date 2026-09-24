@@ -1,0 +1,1676 @@
+[
+  {
+    "query_id": 219,
+    "operation": "sinônimo (troca mínima de uma palavra)",
+    "original": "what are the general effects on flow fields when the reynolds number is small .",
+    "modified": "what are the general effects on flow fields when the reynolds number is low .",
+    "hypothesis": "A literatura usa consagradamente a expressão 'low Reynolds number', enquanto a consulta diz 'the reynolds number is small'. Como ambos os modelos fazem casamento puramente léxico, 'small' não casa com 'low' e a evidência mais discriminativa da consulta se perde. Trocar uma única palavra deve melhorar o ranking sem alterar o significado -- é o caso mais puro de incompatibilidade de vocabulário (Aula 04, slide 39).",
+    "num_relevant": 18,
+    "versions": {
+      "original": {
+        "VSM": {
+          "tokens": [
+            "gener",
+            "effect",
+            "flow",
+            "field",
+            "reynold",
+            "number",
+            "small"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.04459424300660617,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 1221,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 1222,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 208,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 299,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 993,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 664,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 530,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 228,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 971,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 197,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "gener",
+            "effect",
+            "flow",
+            "field",
+            "reynold",
+            "number",
+            "small"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.0374247865511242,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 1221,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 208,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 1222,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 992,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 993,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 299,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 371,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 530,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 7,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1309,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      },
+      "modificada": {
+        "VSM": {
+          "tokens": [
+            "gener",
+            "effect",
+            "flow",
+            "field",
+            "reynold",
+            "number",
+            "low"
+          ],
+          "metrics": {
+            "P@10": 0.1,
+            "R@10": 0.05555555555555555,
+            "AP": 0.11944862670968176,
+            "NDCG@10": 0.12673146362647084
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 670,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 666,
+              "grade": 2,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 537,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 238,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 668,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 535,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 1221,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 139,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 993,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1222,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "gener",
+            "effect",
+            "flow",
+            "field",
+            "reynold",
+            "number",
+            "low"
+          ],
+          "metrics": {
+            "P@10": 0.1,
+            "R@10": 0.05555555555555555,
+            "AP": 0.09314361508442025,
+            "NDCG@10": 0.08650768210770432
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 315,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 1221,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 993,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 666,
+              "grade": 2,
+              "relevant": true
+            },
+            {
+              "position": 5,
+              "doc_id": 1082,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 371,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 139,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 208,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 9,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 710,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "query_id": 69,
+    "operation": "mais específica (acréscimo de termos discriminativos)",
+    "original": "what is known regarding asymptotic solutions to the exact boundary layer equations .",
+    "modified": "asymptotic series solutions for the laminar compressible boundary layer equations",
+    "hypothesis": "Os termos de conteúdo da consulta original são quase todos de baixo poder discriminativo na coleção ('solution', 'boundary', 'layer', 'equation' ocorrem em 400-470 dos 1400 documentos), e ainda são diluídos pelo enquadramento interrogativo 'what is known regarding'. Acrescentar 'series', 'laminar' e 'compressible' deve concentrar o ranking nos artigos de solução em série da camada limite laminar.",
+    "num_relevant": 5,
+    "versions": {
+      "original": {
+        "VSM": {
+          "tokens": [
+            "known",
+            "regard",
+            "asymptot",
+            "solut",
+            "exact",
+            "boundari",
+            "layer",
+            "equat"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.017802170589442553,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 264,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 306,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 664,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 322,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 540,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 128,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 920,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 559,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 393,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1138,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "known",
+            "regard",
+            "asymptot",
+            "solut",
+            "exact",
+            "boundari",
+            "layer",
+            "equat"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.03868321137966403,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 128,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 540,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 111,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 306,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 292,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 131,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 264,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 1383,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 381,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1375,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      },
+      "modificada": {
+        "VSM": {
+          "tokens": [
+            "asymptot",
+            "seri",
+            "solut",
+            "laminar",
+            "compress",
+            "boundari",
+            "layer",
+            "equat"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.045616842564392024,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 664,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 264,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 920,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 322,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 784,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 754,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 111,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 381,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 540,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 785,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "asymptot",
+            "seri",
+            "solut",
+            "laminar",
+            "compress",
+            "boundari",
+            "layer",
+            "equat"
+          ],
+          "metrics": {
+            "P@10": 0.1,
+            "R@10": 0.2,
+            "AP": 0.0916353660001201,
+            "NDCG@10": 0.1708382016872969
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 784,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 111,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 381,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 754,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 94,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 458,
+              "grade": 2,
+              "relevant": true
+            },
+            {
+              "position": 7,
+              "doc_id": 1184,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 664,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 155,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1383,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "query_id": 109,
+    "operation": "mais específica (consulta curta expandida)",
+    "original": "panels subjected to aerodynamic heating .",
+    "modified": "thermal stress buckling and flutter of structural panels subjected to aerodynamic heating in high speed flight",
+    "hypothesis": "Com apenas 4 termos após o pré-processamento, a consulta é curta demais para separar os documentos: 'heat' e 'aerodynam' são frequentes e 'panel' sozinho traz painéis de qualquer natureza. Explicitar a consequência física de interesse (tensão térmica, flambagem, flutter) deve aproximar a consulta do vocabulário dos documentos efetivamente relevantes.",
+    "num_relevant": 5,
+    "versions": {
+      "original": {
+        "VSM": {
+          "tokens": [
+            "panel",
+            "subject",
+            "aerodynam",
+            "heat"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.028329482531163203,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 31,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 391,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 1008,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 627,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 864,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 390,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 5,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 728,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 859,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 711,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "panel",
+            "subject",
+            "aerodynam",
+            "heat"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.037684949313895114,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 391,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 859,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 627,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 1008,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 711,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 51,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 31,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 658,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 5,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 390,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      },
+      "modificada": {
+        "VSM": {
+          "tokens": [
+            "thermal",
+            "stress",
+            "buckl",
+            "flutter",
+            "structur",
+            "panel",
+            "subject",
+            "aerodynam",
+            "heat",
+            "high",
+            "speed",
+            "flight"
+          ],
+          "metrics": {
+            "P@10": 0.0,
+            "R@10": 0.0,
+            "AP": 0.03552729467042689,
+            "NDCG@10": 0.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 31,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 391,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 864,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 766,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 1008,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 858,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 859,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 948,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 658,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 51,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "thermal",
+            "stress",
+            "buckl",
+            "flutter",
+            "structur",
+            "panel",
+            "subject",
+            "aerodynam",
+            "heat",
+            "high",
+            "speed",
+            "flight"
+          ],
+          "metrics": {
+            "P@10": 0.1,
+            "R@10": 0.2,
+            "AP": 0.05994943794716119,
+            "NDCG@10": 0.0333043648832133
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 859,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 31,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 766,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 858,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 658,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 391,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 51,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 12,
+              "grade": 3,
+              "relevant": true
+            },
+            {
+              "position": 9,
+              "doc_id": 948,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 886,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "query_id": 171,
+    "operation": "mais genérica (remoção de termos pouco informativos)",
+    "original": "has a comparison been made between interference-free drag measurements using free-flight models and similar measurements made in a low-blockage wind tunnel .",
+    "modified": "free-flight drag measurements wind tunnel interference blockage",
+    "hypothesis": "A consulta original tem 17 tokens, vários deles genéricos e repetidos ('made' 2x, 'measur' 2x, 'use', 'similar', 'comparison'). No modelo vetorial esses termos inflam a norma do vetor de consulta e diluem o peso de 'blockag' (df=8) e 'interfer' (df=46). Enxugar a consulta para o seu núcleo conceitual deve beneficiar sobretudo o modelo vetorial, que é o mais prejudicado pela diluição.",
+    "num_relevant": 3,
+    "versions": {
+      "original": {
+        "VSM": {
+          "tokens": [
+            "comparison",
+            "made",
+            "interfer",
+            "free",
+            "drag",
+            "measur",
+            "use",
+            "free",
+            "flight",
+            "model",
+            "similar",
+            "measur",
+            "made",
+            "low",
+            "blockag",
+            "wind",
+            "tunnel"
+          ],
+          "metrics": {
+            "P@10": 0.3,
+            "R@10": 1.0,
+            "AP": 0.3055555555555555,
+            "NDCG@10": 0.4848707021795395
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 516,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 672,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 714,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 431,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 5,
+              "doc_id": 800,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 252,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 7,
+              "doc_id": 1074,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 799,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 141,
+              "grade": 4,
+              "relevant": true
+            },
+            {
+              "position": 10,
+              "doc_id": 795,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "comparison",
+            "made",
+            "interfer",
+            "free",
+            "drag",
+            "measur",
+            "use",
+            "free",
+            "flight",
+            "model",
+            "similar",
+            "measur",
+            "made",
+            "low",
+            "blockag",
+            "wind",
+            "tunnel"
+          ],
+          "metrics": {
+            "P@10": 0.3,
+            "R@10": 1.0,
+            "AP": 0.6388888888888888,
+            "NDCG@10": 0.6579125942248476
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 516,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 431,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 141,
+              "grade": 4,
+              "relevant": true
+            },
+            {
+              "position": 4,
+              "doc_id": 252,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 5,
+              "doc_id": 800,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 904,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 714,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 188,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 1066,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 179,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      },
+      "modificada": {
+        "VSM": {
+          "tokens": [
+            "free",
+            "flight",
+            "drag",
+            "measur",
+            "wind",
+            "tunnel",
+            "interfer",
+            "blockag"
+          ],
+          "metrics": {
+            "P@10": 0.3,
+            "R@10": 1.0,
+            "AP": 0.3194444444444444,
+            "NDCG@10": 0.48544893131631994
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 516,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 672,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 714,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 431,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 5,
+              "doc_id": 800,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 252,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 7,
+              "doc_id": 799,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 141,
+              "grade": 4,
+              "relevant": true
+            },
+            {
+              "position": 9,
+              "doc_id": 1074,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1062,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "free",
+            "flight",
+            "drag",
+            "measur",
+            "wind",
+            "tunnel",
+            "interfer",
+            "blockag"
+          ],
+          "metrics": {
+            "P@10": 0.3,
+            "R@10": 1.0,
+            "AP": 0.5555555555555555,
+            "NDCG@10": 0.6131664410767479
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 516,
+              "grade": -1,
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 431,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 141,
+              "grade": 4,
+              "relevant": true
+            },
+            {
+              "position": 4,
+              "doc_id": 800,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 714,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 252,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 7,
+              "doc_id": 672,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 799,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 1153,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 602,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "query_id": 15,
+    "operation": "expansão de vocabulário técnico (sinônimo morfológico)",
+    "original": "material properties of photoelastic materials .",
+    "modified": "physical properties of plastics for photo-thermoelastic stress investigation",
+    "hypothesis": "O termo 'photoelastic' ocorre em um único documento da coleção, mas os dois documentos relevantes usam a variante 'photo-thermoelastic'. Como o tokenizador quebra o hífen, essa variante gera os tokens 'photo' e 'thermoelast', que não casam com o radical 'photoelast'. Usar a forma empregada pelos autores deve resolver o descasamento, ilustrando que nem o stemming nem o IDF conseguem contornar uma diferença de vocabulário.",
+    "num_relevant": 2,
+    "versions": {
+      "original": {
+        "VSM": {
+          "tokens": [
+            "materi",
+            "properti",
+            "photoelast",
+            "materi"
+          ],
+          "metrics": {
+            "P@10": 0.2,
+            "R@10": 1.0,
+            "AP": 0.625,
+            "NDCG@10": 0.45770849517239265
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 462,
+              "grade": 3,
+              "relevant": true
+            },
+            {
+              "position": 2,
+              "doc_id": 1099,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 3,
+              "doc_id": 761,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 1025,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 1043,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 981,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 1340,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 463,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 9,
+              "doc_id": 542,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 817,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "materi",
+            "properti",
+            "photoelast",
+            "materi"
+          ],
+          "metrics": {
+            "P@10": 0.2,
+            "R@10": 1.0,
+            "AP": 1.0,
+            "NDCG@10": 0.7378264247076021
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 462,
+              "grade": 3,
+              "relevant": true
+            },
+            {
+              "position": 2,
+              "doc_id": 463,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 1025,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 1099,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 1340,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 82,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 1043,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 1065,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 542,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 817,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      },
+      "modificada": {
+        "VSM": {
+          "tokens": [
+            "physic",
+            "properti",
+            "plastic",
+            "photo",
+            "thermoelast",
+            "stress",
+            "investig"
+          ],
+          "metrics": {
+            "P@10": 0.2,
+            "R@10": 1.0,
+            "AP": 0.5833333333333333,
+            "NDCG@10": 0.6490311418890105
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 195,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 2,
+              "doc_id": 463,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 462,
+              "grade": 3,
+              "relevant": true
+            },
+            {
+              "position": 4,
+              "doc_id": 30,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 823,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 817,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 820,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 819,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 818,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1121,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        },
+        "BM25": {
+          "tokens": [
+            "physic",
+            "properti",
+            "plastic",
+            "photo",
+            "thermoelast",
+            "stress",
+            "investig"
+          ],
+          "metrics": {
+            "P@10": 0.2,
+            "R@10": 1.0,
+            "AP": 1.0,
+            "NDCG@10": 1.0
+          },
+          "top10": [
+            {
+              "position": 1,
+              "doc_id": 463,
+              "grade": 1,
+              "relevant": true
+            },
+            {
+              "position": 2,
+              "doc_id": 462,
+              "grade": 3,
+              "relevant": true
+            },
+            {
+              "position": 3,
+              "doc_id": 195,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 4,
+              "doc_id": 30,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 5,
+              "doc_id": 817,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 6,
+              "doc_id": 820,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 7,
+              "doc_id": 818,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 8,
+              "doc_id": 819,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 9,
+              "doc_id": 824,
+              "grade": "não julgado",
+              "relevant": false
+            },
+            {
+              "position": 10,
+              "doc_id": 1123,
+              "grade": "não julgado",
+              "relevant": false
+            }
+          ]
+        }
+      }
+    }
+  }
+]

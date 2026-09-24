@@ -1,0 +1,11 @@
+{
+  "comprimento_medio_colecao": 92.07,
+  "comprimento_medio_documentos_relevantes": 92.53924506060007,
+  "comprimento_medio_top10_VSM": 79.42755555555556,
+  "comprimento_medio_top10_BM25": 98.41333333333333,
+  "spearman_delta_AP_vs_comprimento_relevantes": {
+    "rho": 0.43199235130803826,
+    "p_value": 1.2068710680274286e-11,
+    "n": 225
+  }
+}

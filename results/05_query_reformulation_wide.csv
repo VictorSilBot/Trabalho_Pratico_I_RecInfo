@@ -1,0 +1,11 @@
+query_id,operation,model,AP_modificada,AP_original,NDCG@10_modificada,NDCG@10_original,P@10_modificada,P@10_original
+15,expansão de vocabulário técnico (sinônimo morfológico),BM25,1.000000,1.000000,1.000000,0.737826,0.200000,0.200000
+15,expansão de vocabulário técnico (sinônimo morfológico),VSM,0.583333,0.625000,0.649031,0.457708,0.200000,0.200000
+69,mais específica (acréscimo de termos discriminativos),BM25,0.091635,0.038683,0.170838,0.000000,0.100000,0.000000
+69,mais específica (acréscimo de termos discriminativos),VSM,0.045617,0.017802,0.000000,0.000000,0.000000,0.000000
+109,mais específica (consulta curta expandida),BM25,0.059949,0.037685,0.033304,0.000000,0.100000,0.000000
+109,mais específica (consulta curta expandida),VSM,0.035527,0.028329,0.000000,0.000000,0.000000,0.000000
+171,mais genérica (remoção de termos pouco informativos),BM25,0.555556,0.638889,0.613166,0.657913,0.300000,0.300000
+171,mais genérica (remoção de termos pouco informativos),VSM,0.319444,0.305556,0.485449,0.484871,0.300000,0.300000
+219,sinônimo (troca mínima de uma palavra),BM25,0.093144,0.037425,0.086508,0.000000,0.100000,0.000000
+219,sinônimo (troca mínima de uma palavra),VSM,0.119449,0.044594,0.126731,0.000000,0.100000,0.000000

@@ -1,0 +1,673 @@
+{
+  "selecao": {
+    "bm25_superior": [
+      223,
+      59
+    ],
+    "vsm_superior": [
+      113,
+      190
+    ],
+    "ambos_insatisfatorios": [
+      124,
+      13
+    ]
+  },
+  "detalhe": {
+    "bm25_superior": [
+      {
+        "query_id": 223,
+        "original_id": 356,
+        "query_text": "papers on shear buckling of unstiffened rectangular plates under shear .",
+        "query_tokens": [
+          "paper",
+          "shear",
+          "buckl",
+          "unstiffen",
+          "rectangular",
+          "plate",
+          "shear"
+        ],
+        "num_relevant": 4,
+        "AP_VSM": 0.1910714285714286,
+        "AP_BM25": 0.46127450980392154,
+        "delta_AP": 0.2702030812324929,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 1008,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "free-flight measurements of the static and dynamic .",
+              "length_tokens": 51
+            },
+            {
+              "position": 2,
+              "doc_id": 864,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "status of flutter of flat and curved panels .",
+              "length_tokens": 29
+            },
+            {
+              "position": 3,
+              "doc_id": 1399,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "buckling of transverse stiffened plates under shear .",
+              "length_tokens": 46
+            },
+            {
+              "position": 4,
+              "doc_id": 400,
+              "grade": 3,
+              "relevant": true,
+              "title": "buckling stress of clamped rectangular plates in shear .",
+              "length_tokens": 41
+            },
+            {
+              "position": 5,
+              "doc_id": 1359,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "compression tests on circular cylinders stiffened longitudinally by closely spaced z-section stringers .",
+              "length_tokens": 49
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 1399,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "buckling of transverse stiffened plates under shear .",
+              "length_tokens": 46
+            },
+            {
+              "position": 2,
+              "doc_id": 400,
+              "grade": 3,
+              "relevant": true,
+              "title": "buckling stress of clamped rectangular plates in shear .",
+              "length_tokens": 41
+            },
+            {
+              "position": 3,
+              "doc_id": 1398,
+              "grade": 3,
+              "relevant": true,
+              "title": "stability of rectangular plates under shear and bending forces .",
+              "length_tokens": 115
+            },
+            {
+              "position": 4,
+              "doc_id": 419,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "the design of intermediate vertical stiffeners on web plates subjected to shear .",
+              "length_tokens": 72
+            },
+            {
+              "position": 5,
+              "doc_id": 1387,
+              "grade": 3,
+              "relevant": true,
+              "title": "the buckling of a square panel under shear, when one pair of opposite edges is clamped and the other pair is simply supported .",
+              "length_tokens": 120
+            }
+          ]
+        }
+      },
+      {
+        "query_id": 59,
+        "original_id": 100,
+        "query_text": "how much is known about boundary layer flows along non-circular cylinders .",
+        "query_tokens": [
+          "much",
+          "known",
+          "boundari",
+          "layer",
+          "flow",
+          "along",
+          "non",
+          "circular",
+          "cylind"
+        ],
+        "num_relevant": 4,
+        "AP_VSM": 0.11000763016978271,
+        "AP_BM25": 0.3719941784483783,
+        "delta_AP": 0.2619865482785956,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 382,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "a note on the laminar boundary layer on a circular cylinder in axial incompressible flow .",
+              "length_tokens": 21
+            },
+            {
+              "position": 2,
+              "doc_id": 383,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "integration of the boundary layer equations for a plane in compressible flow with heat transfer .",
+              "length_tokens": 67
+            },
+            {
+              "position": 3,
+              "doc_id": 842,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "an improvement on donnell's approximation for thin-walled circular cylinders .",
+              "length_tokens": 38
+            },
+            {
+              "position": 4,
+              "doc_id": 786,
+              "grade": 3,
+              "relevant": true,
+              "title": "the skin friction on infinite cylinders moving parallell to their length .",
+              "length_tokens": 104
+            },
+            {
+              "position": 5,
+              "doc_id": 1154,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "on the influence of wall boundary layers in closed transonic test sections .",
+              "length_tokens": 145
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 785,
+              "grade": 3,
+              "relevant": true,
+              "title": "the flow of fluid along cylinders .",
+              "length_tokens": 76
+            },
+            {
+              "position": 2,
+              "doc_id": 381,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "the axisymmetric boundary layer on a long thin cylinder .",
+              "length_tokens": 128
+            },
+            {
+              "position": 3,
+              "doc_id": 1154,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "on the influence of wall boundary layers in closed transonic test sections .",
+              "length_tokens": 145
+            },
+            {
+              "position": 4,
+              "doc_id": 149,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "expansions at small reynolds number for the flow past a sphere and a circular cylinder .",
+              "length_tokens": 149
+            },
+            {
+              "position": 5,
+              "doc_id": 786,
+              "grade": 3,
+              "relevant": true,
+              "title": "the skin friction on infinite cylinders moving parallell to their length .",
+              "length_tokens": 104
+            }
+          ]
+        }
+      }
+    ],
+    "vsm_superior": [
+      {
+        "query_id": 113,
+        "original_id": 165,
+        "query_text": "what data exists on oscillatory aerodynamic forces on control surfaces at transonic mach numbers .",
+        "query_tokens": [
+          "data",
+          "exist",
+          "oscillatori",
+          "aerodynam",
+          "forc",
+          "control",
+          "surfac",
+          "transon",
+          "mach",
+          "number"
+        ],
+        "num_relevant": 4,
+        "AP_VSM": 0.5138200718935199,
+        "AP_BM25": 0.14870647575658966,
+        "delta_AP": -0.3651135961369302,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 265,
+              "grade": 3,
+              "relevant": true,
+              "title": "some instabilities arising from the interaction between shock waves and boundary layer .",
+              "length_tokens": 49
+            },
+            {
+              "position": 2,
+              "doc_id": 748,
+              "grade": 3,
+              "relevant": true,
+              "title": "subsonic aerodynamic flutter derivatives for wings and control surfaces, /compressible and incompressible flow/ .",
+              "length_tokens": 83
+            },
+            {
+              "position": 3,
+              "doc_id": 594,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "wind tunnel techniques for the measurements of oscillatory derivatives .",
+              "length_tokens": 36
+            },
+            {
+              "position": 4,
+              "doc_id": 1272,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "oscillatory aerodynamic coefficients for a unified supersonic hypersonic strip theory .",
+              "length_tokens": 61
+            },
+            {
+              "position": 5,
+              "doc_id": 716,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "study of the oscillatory motion of manned vehicles entering the earth's atmosphere .",
+              "length_tokens": 50
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 704,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "a systematic kernel function procedure for determining aerodynamic forces on oscillating or steady finite wings at subsonic speeds .",
+              "length_tokens": 185
+            },
+            {
+              "position": 2,
+              "doc_id": 815,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "investigation of several blunt bodies to determine trans- onic aerodynamic characteristics including effects of spinning and of extendible afterbody flaps and some measurements of unsteady base pressures .",
+              "length_tokens": 142
+            },
+            {
+              "position": 3,
+              "doc_id": 748,
+              "grade": 3,
+              "relevant": true,
+              "title": "subsonic aerodynamic flutter derivatives for wings and control surfaces, /compressible and incompressible flow/ .",
+              "length_tokens": 83
+            },
+            {
+              "position": 4,
+              "doc_id": 638,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "longitudinal aerodynamic characteristics at low subsonic speeds of a highly swept wing utilizing nose deflection for control .",
+              "length_tokens": 138
+            },
+            {
+              "position": 5,
+              "doc_id": 708,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "aerodynamic characteristics of two winged reentry vehicles at supersonic and hypersonic speeds .",
+              "length_tokens": 36
+            }
+          ]
+        }
+      },
+      {
+        "query_id": 190,
+        "original_id": 293,
+        "query_text": "will an analysis of panel flutter based on arbitrarily assumed modes of deformation prove satisfactory, and if so, what is the minimum number of modes that need be considered .",
+        "query_tokens": [
+          "analysi",
+          "panel",
+          "flutter",
+          "base",
+          "arbitrarili",
+          "assum",
+          "mode",
+          "deform",
+          "prove",
+          "satisfactori",
+          "minimum",
+          "number",
+          "mode",
+          "need",
+          "consid"
+        ],
+        "num_relevant": 5,
+        "AP_VSM": 0.7198412698412697,
+        "AP_BM25": 0.3828138528138528,
+        "delta_AP": -0.33702741702741695,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 390,
+              "grade": 3,
+              "relevant": true,
+              "title": "some panel-flutter studies using piston theory .",
+              "length_tokens": 75
+            },
+            {
+              "position": 2,
+              "doc_id": 391,
+              "grade": 1,
+              "relevant": true,
+              "title": "flutter of rectangular simply supported panels at high supersonic speeds .",
+              "length_tokens": 78
+            },
+            {
+              "position": 3,
+              "doc_id": 1008,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "free-flight measurements of the static and dynamic .",
+              "length_tokens": 51
+            },
+            {
+              "position": 4,
+              "doc_id": 15,
+              "grade": 1,
+              "relevant": true,
+              "title": "on two-dimensional panel flutter .",
+              "length_tokens": 74
+            },
+            {
+              "position": 5,
+              "doc_id": 627,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "flutter analysis of circular panels .",
+              "length_tokens": 85
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 390,
+              "grade": 3,
+              "relevant": true,
+              "title": "some panel-flutter studies using piston theory .",
+              "length_tokens": 75
+            },
+            {
+              "position": 2,
+              "doc_id": 627,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "flutter analysis of circular panels .",
+              "length_tokens": 85
+            },
+            {
+              "position": 3,
+              "doc_id": 856,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "some experimental studies of panel flutter at mach 1 .3.",
+              "length_tokens": 137
+            },
+            {
+              "position": 4,
+              "doc_id": 1339,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "calculation of flutter characteristics for finite-span swept or unswept wings at subsonic and supersonic speeds by a modified strip analysis .",
+              "length_tokens": 130
+            },
+            {
+              "position": 5,
+              "doc_id": 15,
+              "grade": 1,
+              "relevant": true,
+              "title": "on two-dimensional panel flutter .",
+              "length_tokens": 74
+            }
+          ]
+        }
+      }
+    ],
+    "ambos_insatisfatorios": [
+      {
+        "query_id": 124,
+        "original_id": 182,
+        "query_text": "in what areas, other than low density wind tunnel flows, is viscous compressible flow in slender channels a problem . what analytical investigations have been made of the stability of conical shells . how do the results compare with experiment .",
+        "query_tokens": [
+          "area",
+          "low",
+          "densiti",
+          "wind",
+          "tunnel",
+          "flow",
+          "viscou",
+          "compress",
+          "flow",
+          "slender",
+          "channel",
+          "problem",
+          "analyt",
+          "investig",
+          "made",
+          "stabil",
+          "conic",
+          "shell",
+          "result",
+          "compar",
+          "experi"
+        ],
+        "num_relevant": 4,
+        "AP_VSM": 0.0038681409583205782,
+        "AP_BM25": 0.004299452692328237,
+        "delta_AP": 0.00043131173400765867,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 941,
+              "grade": -1,
+              "relevant": false,
+              "title": "viscous compressible and incompressible flow in slender channels .",
+              "length_tokens": 60
+            },
+            {
+              "position": 2,
+              "doc_id": 898,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "a survey of buckling theory and experiment for circular conical shells of constant thickness .",
+              "length_tokens": 31
+            },
+            {
+              "position": 3,
+              "doc_id": 938,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "calculations for the stability of thin conical frustums subjected to external uniform hydrostatic pressure and axial loads .",
+              "length_tokens": 38
+            },
+            {
+              "position": 4,
+              "doc_id": 1070,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "buckling of orthotropic and stiffened conical shells .",
+              "length_tokens": 67
+            },
+            {
+              "position": 5,
+              "doc_id": 516,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "free-flight measurements of the dynamic longitudinal stability characteristics of a wind tunnel interference model (m=0 .92 to 1. 35) .",
+              "length_tokens": 57
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 941,
+              "grade": -1,
+              "relevant": false,
+              "title": "viscous compressible and incompressible flow in slender channels .",
+              "length_tokens": 60
+            },
+            {
+              "position": 2,
+              "doc_id": 516,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "free-flight measurements of the dynamic longitudinal stability characteristics of a wind tunnel interference model (m=0 .92 to 1. 35) .",
+              "length_tokens": 57
+            },
+            {
+              "position": 3,
+              "doc_id": 898,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "a survey of buckling theory and experiment for circular conical shells of constant thickness .",
+              "length_tokens": 31
+            },
+            {
+              "position": 4,
+              "doc_id": 442,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "some effects of variations in several parameters including fluid density on the flutter speed of light uniform cantilever wings .",
+              "length_tokens": 118
+            },
+            {
+              "position": 5,
+              "doc_id": 934,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "stability of cylindrical and conical shells of circular cross section, with simultaneous action of axial compression and external normal pressure .",
+              "length_tokens": 116
+            }
+          ]
+        }
+      },
+      {
+        "query_id": 13,
+        "original_id": 26,
+        "query_text": "what is the basic mechanism of the transonic aileron buzz .",
+        "query_tokens": [
+          "basic",
+          "mechan",
+          "transon",
+          "aileron",
+          "buzz"
+        ],
+        "num_relevant": 4,
+        "AP_VSM": 0.007836726087423283,
+        "AP_BM25": 0.007836726087423283,
+        "delta_AP": 0.0,
+        "top5": {
+          "VSM": [
+            {
+              "position": 1,
+              "doc_id": 496,
+              "grade": -1,
+              "relevant": false,
+              "title": "a theory of transonic aileron buzz, neglecting viscous effects .",
+              "length_tokens": 69
+            },
+            {
+              "position": 2,
+              "doc_id": 903,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "two dimensional transonic unsteady flow with shock waves .",
+              "length_tokens": 120
+            },
+            {
+              "position": 3,
+              "doc_id": 520,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "wing-tail interference as a cause of 'magnus' effects on a finned missile .",
+              "length_tokens": 133
+            },
+            {
+              "position": 4,
+              "doc_id": 643,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "an investigation of wing-aileron flutter using ground launched rocket models .",
+              "length_tokens": 78
+            },
+            {
+              "position": 5,
+              "doc_id": 313,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "on alternative forms for the basic equations of transonic flow theory .",
+              "length_tokens": 34
+            }
+          ],
+          "BM25": [
+            {
+              "position": 1,
+              "doc_id": 496,
+              "grade": -1,
+              "relevant": false,
+              "title": "a theory of transonic aileron buzz, neglecting viscous effects .",
+              "length_tokens": 69
+            },
+            {
+              "position": 2,
+              "doc_id": 903,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "two dimensional transonic unsteady flow with shock waves .",
+              "length_tokens": 120
+            },
+            {
+              "position": 3,
+              "doc_id": 520,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "wing-tail interference as a cause of 'magnus' effects on a finned missile .",
+              "length_tokens": 133
+            },
+            {
+              "position": 4,
+              "doc_id": 313,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "on alternative forms for the basic equations of transonic flow theory .",
+              "length_tokens": 34
+            },
+            {
+              "position": 5,
+              "doc_id": 440,
+              "grade": "não julgado",
+              "relevant": false,
+              "title": "compilation of information on the transonic attachment of flows at the leading edge of airfoils .",
+              "length_tokens": 56
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1133 @@
+{
+  "consultas_candidatas": [
+    124,
+    13,
+    139,
+    87,
+    80,
+    98
+  ],
+  "falsos_positivos": [
+    {
+      "query_id": 98,
+      "query_text": "will forward or apex located controls be effective at low subsonic speeds and how do they compare with conventional trailing-edge flaps .",
+      "position": 1,
+      "doc_id": 638,
+      "title": "longitudinal aerodynamic characteristics at low subsonic speeds of a highly swept wing utilizing nose deflection for control .",
+      "grade": -1,
+      "score": 35.12982118128742,
+      "doc_length_tokens": 138,
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 638,
+        "doc_length": 138.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 1.6489736070381233,
+        "score": 35.129821181287426,
+        "terms": [
+          {
+            "term": "flap",
+            "qtf": 1,
+            "f_td": 4.0,
+            "n_i": 18.0,
+            "idf": 4.327170814252728,
+            "saturation_factor": 1.557805118621191,
+            "contribution": 6.740888843591127
+          },
+          {
+            "term": "control",
+            "qtf": 1,
+            "f_td": 8.0,
+            "n_i": 61.0,
+            "idf": 3.125904371524535,
+            "saturation_factor": 1.8240282041151266,
+            "contribution": 5.70173773702752
+          },
+          {
+            "term": "trail",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 45.0,
+            "idf": 3.4272292203801022,
+            "saturation_factor": 1.4196682016022204,
+            "contribution": 4.865528343775599
+          },
+          {
+            "term": "locat",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 80.0,
+            "idf": 2.8566843619124893,
+            "saturation_factor": 1.2058185325082376,
+            "contribution": 3.444642945120549
+          },
+          {
+            "term": "subson",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 113.0,
+            "idf": 2.5131387094155495,
+            "saturation_factor": 1.2058185325082376,
+            "contribution": 3.030389230577104
+          },
+          {
+            "term": "edg",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 189.0,
+            "idf": 2.000552521814526,
+            "saturation_factor": 1.4196682016022204,
+            "contribution": 2.8401208008552152
+          },
+          {
+            "term": "forward",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 47.0,
+            "idf": 3.3842118352964112,
+            "saturation_factor": 0.8305103509354588,
+            "contribution": 2.8106229589719556
+          },
+          {
+            "term": "low",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 154.0,
+            "idf": 2.204747449999207,
+            "saturation_factor": 1.2058185325082376,
+            "contribution": 2.6585253347093225
+          },
+          {
+            "term": "speed",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 292.0,
+            "idf": 1.5664768796650959,
+            "saturation_factor": 1.2058185325082376,
+            "contribution": 1.8888868522458488
+          },
+          {
+            "term": "effect",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 540.0,
+            "idf": 0.952446909257744,
+            "saturation_factor": 1.2058185325082376,
+            "contribution": 1.1484781344131794
+          },
+          {
+            "term": "apex",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 9.0,
+            "idf": 4.993649747730512,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "compar",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 247.0,
+            "idf": 1.733530964328262,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "convent",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 37.0,
+            "idf": 3.620600613360642,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 124,
+      "query_text": "in what areas, other than low density wind tunnel flows, is viscous compressible flow in slender channels a problem . what analytical investigations have been made of the stability of conical shells . how do the results compare with experiment .",
+      "position": 1,
+      "doc_id": 941,
+      "title": "viscous compressible and incompressible flow in slender channels .",
+      "grade": -1,
+      "score": 27.906007404666056,
+      "doc_length_tokens": 60,
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 941,
+        "doc_length": 60.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 0.8865102639296187,
+        "score": 27.906007404666056,
+        "terms": [
+          {
+            "term": "channel",
+            "qtf": 1,
+            "f_td": 6.0,
+            "n_i": 17.0,
+            "idf": 4.382740665407539,
+            "saturation_factor": 1.9167908699910574,
+            "contribution": 8.400797292991703
+          },
+          {
+            "term": "slender",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 96.0,
+            "idf": 2.675398537992067,
+            "saturation_factor": 1.6981815438014034,
+            "contribution": 4.543312419531386
+          },
+          {
+            "term": "viscou",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 122.0,
+            "idf": 2.4368305163522255,
+            "saturation_factor": 1.5243320125977853,
+            "contribution": 3.714538765350888
+          },
+          {
+            "term": "compress",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 199.0,
+            "idf": 1.949127310007089,
+            "saturation_factor": 1.6981815438014034,
+            "contribution": 3.309972024373315
+          },
+          {
+            "term": "analyt",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 1.1661744131820302,
+            "contribution": 3.0049942176323374
+          },
+          {
+            "term": "flow",
+            "qtf": 2,
+            "f_td": 6.0,
+            "n_i": 730.0,
+            "idf": 0.6512123151462529,
+            "saturation_factor": 1.9167908699910574,
+            "contribution": 2.4964756401961536
+          },
+          {
+            "term": "made",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 351.0,
+            "idf": 1.3827318350862874,
+            "saturation_factor": 1.1661744131820302,
+            "contribution": 1.612506486369863
+          },
+          {
+            "term": "result",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 691.0,
+            "idf": 0.7060783952321941,
+            "saturation_factor": 1.1661744131820302,
+            "contribution": 0.8234105582204135
+          },
+          {
+            "term": "area",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 59.0,
+            "idf": 3.158965233785423,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "compar",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 247.0,
+            "idf": 1.733530964328262,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "conic",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 67.0,
+            "idf": 3.032813948458523,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "densiti",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 88.0,
+            "idf": 2.761938994323123,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "experi",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 152.0,
+            "idf": 2.2177769502895406,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "investig",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 361.0,
+            "idf": 1.3546795047381877,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "low",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 154.0,
+            "idf": 2.204747449999207,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "problem",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 323.0,
+            "idf": 1.4657424323960517,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "shell",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "stabil",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 120.0,
+            "idf": 2.453291793406297,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "tunnel",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 180.0,
+            "idf": 2.0492107685640715,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "wind",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 127.0,
+            "idf": 2.396825181738526,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 139,
+      "query_text": "has the effect of the change of initial pressure due to deformation, on the frequencies of vibration of circular cylindrical shells been investigated .",
+      "position": 1,
+      "doc_id": 847,
+      "title": "experimental study of the vibrations of a circular cylindrical shell .",
+      "grade": "não julgado",
+      "score": 24.46264071953855,
+      "doc_length_tokens": 53,
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 847,
+        "doc_length": 53.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 0.8180840664711632,
+        "score": 24.46264071953855,
+        "terms": [
+          {
+            "term": "frequenc",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 56.0,
+            "idf": 3.2107009081846116,
+            "saturation_factor": 1.5613444795171532,
+            "contribution": 5.013010138374753
+          },
+          {
+            "term": "vibrat",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 57.0,
+            "idf": 3.1931565985337023,
+            "saturation_factor": 1.5613444795171532,
+            "contribution": 4.9856174273543665
+          },
+          {
+            "term": "shell",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 1.7286156839652835,
+            "contribution": 4.454290950056568
+          },
+          {
+            "term": "cylindr",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 99.0,
+            "idf": 2.6447839021724597,
+            "saturation_factor": 1.5613444795171532,
+            "contribution": 4.129418745172805
+          },
+          {
+            "term": "circular",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 139.0,
+            "idf": 2.3068769450755866,
+            "saturation_factor": 1.5613444795171532,
+            "contribution": 3.6018295831191622
+          },
+          {
+            "term": "effect",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 540.0,
+            "idf": 0.952446909257744,
+            "saturation_factor": 1.2100650572611433,
+            "contribution": 1.152522723789171
+          },
+          {
+            "term": "pressur",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 552.0,
+            "idf": 0.930488112945099,
+            "saturation_factor": 1.2100650572611433,
+            "contribution": 1.1259511516717244
+          },
+          {
+            "term": "chang",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 122.0,
+            "idf": 2.4368305163522255,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "deform",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 47.0,
+            "idf": 3.3842118352964112,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "due",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 143.0,
+            "idf": 2.278606511137331,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "initi",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 109.0,
+            "idf": 2.5490169970804515,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "investig",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 361.0,
+            "idf": 1.3546795047381877,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 139,
+      "query_text": "has the effect of the change of initial pressure due to deformation, on the frequencies of vibration of circular cylindrical shells been investigated .",
+      "position": 2,
+      "doc_id": 897,
+      "title": "some results on buckling and postbuckling of cylindrical shells .",
+      "grade": "não julgado",
+      "score": 23.964805339282645,
+      "doc_length_tokens": 60,
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 897,
+        "doc_length": 60.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 0.8865102639296187,
+        "score": 23.964805339282645,
+        "terms": [
+          {
+            "term": "deform",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 47.0,
+            "idf": 3.3842118352964112,
+            "saturation_factor": 1.5243320125977853,
+            "contribution": 5.158662437954623
+          },
+          {
+            "term": "cylindr",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 99.0,
+            "idf": 2.6447839021724597,
+            "saturation_factor": 1.6981815438014034,
+            "contribution": 4.491323210012328
+          },
+          {
+            "term": "shell",
+            "qtf": 1,
+            "f_td": 3.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 1.6981815438014034,
+            "contribution": 4.375868362339582
+          },
+          {
+            "term": "initi",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 109.0,
+            "idf": 2.5490169970804515,
+            "saturation_factor": 1.5243320125977853,
+            "contribution": 3.8855482093056075
+          },
+          {
+            "term": "circular",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 139.0,
+            "idf": 2.3068769450755866,
+            "saturation_factor": 1.5243320125977853,
+            "contribution": 3.5164463765024996
+          },
+          {
+            "term": "effect",
+            "qtf": 1,
+            "f_td": 2.0,
+            "n_i": 540.0,
+            "idf": 0.952446909257744,
+            "saturation_factor": 1.5243320125977853,
+            "contribution": 1.4518453140813972
+          },
+          {
+            "term": "pressur",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 552.0,
+            "idf": 0.930488112945099,
+            "saturation_factor": 1.1661744131820302,
+            "contribution": 1.0851114290866055
+          },
+          {
+            "term": "chang",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 122.0,
+            "idf": 2.4368305163522255,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "due",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 143.0,
+            "idf": 2.278606511137331,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "frequenc",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 56.0,
+            "idf": 3.2107009081846116,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "investig",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 361.0,
+            "idf": 1.3546795047381877,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "vibrat",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 57.0,
+            "idf": 3.1931565985337023,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "falsos_negativos": [
+    {
+      "query_id": 80,
+      "query_text": "are methods of measuring aerodynamic derivatives available which could be adopted for use in short running time facilities .",
+      "doc_id": 596,
+      "title": "the properties of crossed flexure pivots, and the influence of the point at which the strips cross .",
+      "grade": 3,
+      "rank_bm25": 1206,
+      "rank_vsm": 1206,
+      "doc_length_tokens": 55,
+      "query_tokens": [
+        "method",
+        "measur",
+        "aerodynam",
+        "deriv",
+        "avail",
+        "could",
+        "adopt",
+        "use",
+        "short",
+        "run",
+        "time",
+        "facil"
+      ],
+      "doc_tokens_matched": [],
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 596,
+        "doc_length": 55.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 0.8376344086021505,
+        "score": 0.0,
+        "terms": [
+          {
+            "term": "adopt",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 7.0,
+            "idf": 5.230038525794742,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "aerodynam",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 179.0,
+            "idf": 2.0547663384086734,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "avail",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 81.0,
+            "idf": 2.84433852609019,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "could",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 62.0,
+            "idf": 3.1097749895946514,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "deriv",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 213.0,
+            "idf": 1.8813047136683276,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "facil",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 14.0,
+            "idf": 4.570792896910478,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "measur",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 252.0,
+            "idf": 1.7135302976215925,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "method",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 455.0,
+            "idf": 1.123545829636994,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "run",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 15.0,
+            "idf": 4.504101522411806,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "short",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 39.0,
+            "idf": 3.568640874429931,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "time",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 153.0,
+            "idf": 2.211240979309755,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "use",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 514.0,
+            "idf": 1.0017459910629027,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 124,
+      "query_text": "in what areas, other than low density wind tunnel flows, is viscous compressible flow in slender channels a problem . what analytical investigations have been made of the stability of conical shells . how do the results compare with experiment .",
+      "doc_id": 968,
+      "title": "rocket propulsion systems for interplanetary flight .",
+      "grade": 2,
+      "rank_bm25": 1079,
+      "rank_vsm": 1072,
+      "doc_length_tokens": 103,
+      "query_tokens": [
+        "area",
+        "low",
+        "densiti",
+        "wind",
+        "tunnel",
+        "flow",
+        "viscou",
+        "compress",
+        "flow",
+        "slender",
+        "channel",
+        "problem",
+        "analyt",
+        "investig",
+        "made",
+        "stabil",
+        "conic",
+        "shell",
+        "result",
+        "compar",
+        "experi"
+      ],
+      "doc_tokens_matched": [
+        "compar",
+        "made"
+      ],
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 968,
+        "doc_length": 103.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 1.3068426197458456,
+        "score": 2.971931461656166,
+        "terms": [
+          {
+            "term": "compar",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 247.0,
+            "idf": 1.733530964328262,
+            "saturation_factor": 0.9536844781558542,
+            "contribution": 1.6532415730824133
+          },
+          {
+            "term": "made",
+            "qtf": 1,
+            "f_td": 1.0,
+            "n_i": 351.0,
+            "idf": 1.3827318350862874,
+            "saturation_factor": 0.9536844781558542,
+            "contribution": 1.3186898885737526
+          },
+          {
+            "term": "analyt",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "area",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 59.0,
+            "idf": 3.158965233785423,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "channel",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 17.0,
+            "idf": 4.382740665407539,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "compress",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 199.0,
+            "idf": 1.949127310007089,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "conic",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 67.0,
+            "idf": 3.032813948458523,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "densiti",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 88.0,
+            "idf": 2.761938994323123,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "experi",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 152.0,
+            "idf": 2.2177769502895406,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "flow",
+            "qtf": 2,
+            "f_td": 0.0,
+            "n_i": 730.0,
+            "idf": 0.6512123151462529,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "investig",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 361.0,
+            "idf": 1.3546795047381877,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "low",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 154.0,
+            "idf": 2.204747449999207,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "problem",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 323.0,
+            "idf": 1.4657424323960517,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "result",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 691.0,
+            "idf": 0.7060783952321941,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "shell",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 106.0,
+            "idf": 2.576796561187527,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "slender",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 96.0,
+            "idf": 2.675398537992067,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "stabil",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 120.0,
+            "idf": 2.453291793406297,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "tunnel",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 180.0,
+            "idf": 2.0492107685640715,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "viscou",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 122.0,
+            "idf": 2.4368305163522255,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "wind",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 127.0,
+            "idf": 2.396825181738526,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 87,
+      "query_text": "what effect has the boundary layer in modifying the basic inviscid flow behind the shock, neglecting effects of leading edge and corner .",
+      "doc_id": 236,
+      "title": "criteria for thermodynamic equilibrium in gas flow .",
+      "grade": 4,
+      "rank_bm25": 1034,
+      "rank_vsm": 1066,
+      "doc_length_tokens": 94,
+      "query_tokens": [
+        "effect",
+        "boundari",
+        "layer",
+        "modifi",
+        "basic",
+        "inviscid",
+        "flow",
+        "behind",
+        "shock",
+        "neglect",
+        "effect",
+        "lead",
+        "edg",
+        "corner"
+      ],
+      "doc_tokens_matched": [
+        "flow"
+      ],
+      "explain_bm25": {
+        "model": "BM25(k1=1.2, b=0.75)",
+        "doc_id": 236,
+        "doc_length": 94.0,
+        "avg_doc_length": 92.07,
+        "length_norm_K": 1.2188660801564029,
+        "score": 1.1907690854052109,
+        "terms": [
+          {
+            "term": "flow",
+            "qtf": 1,
+            "f_td": 6.0,
+            "n_i": 730.0,
+            "idf": 0.6512123151462529,
+            "saturation_factor": 1.8285420249427888,
+            "contribution": 1.1907690854052109
+          },
+          {
+            "term": "basic",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 41.0,
+            "idf": 3.519248119100354,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "behind",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 68.0,
+            "idf": 3.0181078010688274,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "boundari",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 469.0,
+            "idf": 1.0932732476886893,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "corner",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 17.0,
+            "idf": 4.382740665407539,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "edg",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 189.0,
+            "idf": 2.000552521814526,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "effect",
+            "qtf": 2,
+            "f_td": 0.0,
+            "n_i": 540.0,
+            "idf": 0.952446909257744,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "inviscid",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 79.0,
+            "idf": 2.869184524676721,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "layer",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 414.0,
+            "idf": 1.2178685717616573,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "lead",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 174.0,
+            "idf": 2.083016804694525,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "modifi",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 76.0,
+            "idf": 2.9076508055045167,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "neglect",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 45.0,
+            "idf": 3.4272292203801022,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          },
+          {
+            "term": "shock",
+            "qtf": 1,
+            "f_td": 0.0,
+            "n_i": 240.0,
+            "idf": 1.7622214567911911,
+            "saturation_factor": 0.0,
+            "contribution": 0.0
+          }
+        ]
+      }
+    }
+  ]
+}
