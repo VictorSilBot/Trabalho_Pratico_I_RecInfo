@@ -16,7 +16,7 @@ ICMC / USP - 2º semestre de 2026 - Prof. Marcelo G. Manzato
 | Victor Silva Botelho | 15645421 | victorbotelho@usp.br |
 | João Pedro Barbosa Madeira | 13683038 | Joaopedro08madeira@gmail.com |
 
-Os mesmos dados constam na capa do relatório (`report/relatorio.tex`).
+Os mesmos dados constam na capa do relatório (`report/relatorio.pdf`).
 
 ---
 
@@ -59,7 +59,6 @@ todas as figuras. Tempo típico: cerca de **15 segundos** após o download.
 | `python run_all.py --no-download` | usa os arquivos já presentes em `data/cran` |
 | `python run_all.py --skip-figures` | apenas os resultados numéricos |
 | `python tests/test_ir_tp1.py` | executa os 16 testes de correção |
-| `python report/build_report.py` | regera `report/relatorio.pdf` |
 
 ### Aviso para Windows
 
@@ -85,7 +84,6 @@ caminhos longos no Windows.
 | NLTK | 3.10.3 | lista de stopwords e stemmer de Porter |
 | pandas | 3.0.6 | tabelas de resultados e escrita dos CSVs |
 | matplotlib | 3.11.2 | figuras |
-| ReportLab | 5.0.1 | geração do relatório em PDF |
 
 As versões exatas estão fixadas em `requirements.txt`.
 
