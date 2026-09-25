@@ -7,9 +7,9 @@ Uso:
     python run_all.py --skip-figures  # só os resultados numéricos
 
 Saídas:
-    data/cran/   -- coleção Cranfield (documentos, consultas, qrels)
-    results/     -- CSVs e JSONs com todos os resultados, por consulta e agregados
-    figures/     -- figuras do relatório em PNG
+    data/cran/:  coleção Cranfield (documentos, consultas, qrels)
+    results/:    CSVs e JSONs com todos os resultados, por consulta e agregados
+    figures/:    figuras do relatório em PNG
 """
 
 from __future__ import annotations

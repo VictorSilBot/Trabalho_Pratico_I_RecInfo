@@ -1,19 +1,18 @@
 """Execução de todos os experimentos exigidos pelo enunciado (requisitos 1-9).
 
-Cada função ``experiment_*`` corresponde a um requisito, grava seus artefatos
-em ``results/`` e devolve um dicionário com o que o relatório precisa.
+Cada função 'experiment_*' corresponde a um requisito, grava seus artefatos
+em 'results/' e devolve um dicionário com o que o relatório precisa.
 
-Convenções globais
-------------------
-* Todos os experimentos usam a MESMA coleção, as mesmas 225 consultas e o
+Convenções globais:
+- Todos os experimentos usam a MESMA coleção, as mesmas 225 consultas e o
   mesmo qrel.
-* O ranking é calculado sobre os 1400 documentos; os cortes (@10) são
+- O ranking é calculado sobre os 1400 documentos; os cortes (@10) são
   aplicados apenas no cálculo das métricas.
-* Os qrels são usados exclusivamente para AVALIAR. Nenhuma etapa de
+- Os qrels são usados exclusivamente para AVALIAR. Nenhuma etapa de
   indexação, ponderação ou reformulação consulta os julgamentos.
-* A configuração principal ("main") usa o pré-processamento vencedor do
+- A configuração principal ("main") usa o pré-processamento vencedor do
   requisito 1, escolhido por MAP do BM25, e os parâmetros padrão
-  ``k1 = 1.2``, ``b = 0.75``.
+  'k1 = 1.2', 'b = 0.75'.
 """
 
 from __future__ import annotations
@@ -84,7 +83,7 @@ def build_models(
 def _relevance_flags(
     ranked: Sequence[int], qrels_for_query: dict[int, int], n: int
 ) -> list[dict]:
-    """Anota os ``n`` primeiros documentos com seu julgamento de relevância."""
+    """Anota os 'n' primeiros documentos com seu julgamento de relevância."""
     relevant = binary_relevant(qrels_for_query)
     out = []
     for position, doc_id in enumerate(ranked[:n], start=1):
@@ -113,7 +112,7 @@ def _write_json(payload, path: Path) -> None:
 
 
 # ======================================================================
-# Requisito 1 -- Pré-processamento
+# Requisito 1: Pré-processamento
 # ======================================================================
 def experiment_preprocessing(collection: Cranfield, data_dir: Path, results_dir: Path):
     """Compara as quatro configurações de pré-processamento nos dois modelos."""
@@ -165,7 +164,7 @@ def experiment_preprocessing(collection: Cranfield, data_dir: Path, results_dir:
 
 
 # ======================================================================
-# Requisitos 2, 3, 4 e 5 -- Modelos, métricas e comparação
+# Requisitos 2, 3, 4 e 5: Modelos, métricas e comparação
 # ======================================================================
 def experiment_models(
     collection: Cranfield, index, vsm, bm25, results_dir: Path
@@ -245,7 +244,7 @@ def experiment_models(
 
 
 # ======================================================================
-# Requisito 6 -- Análise por consulta
+# Requisito 6: Análise por consulta
 # ======================================================================
 def experiment_query_analysis(
     collection: Cranfield, index, vsm, bm25, comparison: pd.DataFrame, results_dir: Path
@@ -253,9 +252,9 @@ def experiment_query_analysis(
     """Seleciona e detalha as seis consultas exigidas pelo requisito 6.
 
     A seleção é automática e determinística: entre as consultas com pelo
-    menos :data:`MIN_RELEVANT_FOR_ANALYSIS` documentos relevantes, tomamos as
-    duas com maior ``delta_AP`` (BM25 superior), as duas com menor
-    ``delta_AP`` (vetorial superior) e as duas com menor AP médio (ambos
+    menos 'MIN_RELEVANT_FOR_ANALYSIS' documentos relevantes, tomamos as
+    duas com maior 'delta_AP' (BM25 superior), as duas com menor
+    'delta_AP' (vetorial superior) e as duas com menor AP médio (ambos
     insatisfatórios).
     """
     eligible = comparison[comparison["num_relevant"] >= MIN_RELEVANT_FOR_ANALYSIS].copy()
@@ -318,12 +317,12 @@ def experiment_query_analysis(
 
 
 # ======================================================================
-# Requisito 7 -- Variação dos parâmetros do BM25
+# Requisito 7: Variação dos parâmetros do BM25
 # ======================================================================
 def experiment_bm25_parameters(
     collection: Cranfield, index, results_dir: Path
 ):
-    """Varre a grade ``k1 x b`` e isola o efeito de ``b`` em uma consulta."""
+    """Varre a grade 'k1 x b' e isola o efeito de 'b' em uma consulta."""
     rows = []
     per_query_rows = []
     runs_by_params: dict[tuple[float, float], dict[int, list[int]]] = {}
@@ -414,7 +413,7 @@ def experiment_bm25_parameters(
 
 
 # ======================================================================
-# Requisito 8 -- Modificação de consultas
+# Requisito 8: Modificação de consultas
 # ======================================================================
 def experiment_query_reformulation(
     collection: Cranfield, index, vsm, bm25, results_dir: Path
@@ -483,7 +482,7 @@ def experiment_query_reformulation(
 
 
 # ======================================================================
-# Requisito 9 -- Análise de erros
+# Requisito 9: Análise de erros
 # ======================================================================
 def experiment_error_analysis(
     collection: Cranfield, index, vsm, bm25, comparison: pd.DataFrame, results_dir: Path
@@ -492,14 +491,14 @@ def experiment_error_analysis(
 
     A seleção é automática:
 
-    * **Falsos positivos**: entre as consultas analisadas no requisito 6,
+    - Falsos positivos: entre as consultas analisadas no requisito 6,
       documentos NÃO relevantes que o BM25 coloca nas duas primeiras
       posições, escolhidos pelo maior score.
-    * **Falso negativo**: documento relevante com o PIOR posto entre os
+    - Falso negativo: documento relevante com o PIOR posto entre os
       documentos relevantes das mesmas consultas, ou seja, o caso mais
       extremo de relevante perdido.
 
-    Para cada caso guardamos a decomposição do score (``explain``), que é o
+    Para cada caso guardamos a decomposição do score ('explain'), que é o
     que permite argumentar sobre a causa.
     """
     eligible = comparison[comparison["num_relevant"] >= MIN_RELEVANT_FOR_ANALYSIS]
@@ -603,7 +602,7 @@ def experiment_error_analysis(
 
 
 # ======================================================================
-# Apoio ao requisito 5 -- por que os modelos discordam
+# Apoio ao requisito 5: por que os modelos discordam
 # ======================================================================
 def experiment_length_analysis(
     collection: Cranfield, index, vsm, bm25, comparison: pd.DataFrame, results_dir: Path
@@ -613,7 +612,7 @@ def experiment_length_analysis(
     A inspeção das consultas do requisito 6 sugere que a discordância entre
     os dois modelos é governada pelo COMPRIMENTO dos documentos: a
     normalização pelo cosseno é integral (divide pela norma completa do
-    vetor), enquanto o BM25 com ``b = 0.75`` normaliza apenas parcialmente.
+    vetor), enquanto o BM25 com 'b = 0.75' normaliza apenas parcialmente.
     Se isso for verdade, então:
 
     a) os documentos do Top-10 do BM25 devem ser em média mais longos que os
@@ -622,7 +621,7 @@ def experiment_length_analysis(
        relevantes são longos.
 
     Medimos as duas coisas. O item (b) é avaliado pela correlação de
-    Spearman entre ``delta_AP`` e o comprimento médio dos documentos
+    Spearman entre 'delta_AP' e o comprimento médio dos documentos
     relevantes da consulta.
     """
     from scipy.stats import spearmanr
@@ -676,9 +675,9 @@ def experiment_length_analysis(
 def experiment_design_choices(collection: Cranfield, index, results_dir: Path):
     """Quantifica duas decisões de implementação discutidas no relatório.
 
-    1. **Variante do IDF do BM25** -- Robertson com suavização (não negativo)
-       contra a forma ``log((N+0.5)/(n+0.5))`` mostrada na Aula 03.
-    2. **Mapeamento de ganho do NDCG** -- corrigir a escala invertida do
+    1. Variante do IDF do BM25: Robertson com suavização (não negativo)
+       contra a forma 'log((N+0.5)/(n+0.5))' mostrada na Aula 03.
+    2. Mapeamento de ganho do NDCG: corrigir a escala invertida do
        Cranfield contra usar o grau bruto.
     """
     rows = []

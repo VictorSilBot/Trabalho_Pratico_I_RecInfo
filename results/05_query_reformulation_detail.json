@@ -4,7 +4,7 @@
     "operation": "sinônimo (troca mínima de uma palavra)",
     "original": "what are the general effects on flow fields when the reynolds number is small .",
     "modified": "what are the general effects on flow fields when the reynolds number is low .",
-    "hypothesis": "A literatura usa consagradamente a expressão 'low Reynolds number', enquanto a consulta diz 'the reynolds number is small'. Como ambos os modelos fazem casamento puramente léxico, 'small' não casa com 'low' e a evidência mais discriminativa da consulta se perde. Trocar uma única palavra deve melhorar o ranking sem alterar o significado -- é o caso mais puro de incompatibilidade de vocabulário (Aula 04, slide 39).",
+    "hypothesis": "A literatura usa consagradamente a expressão 'low Reynolds number', enquanto a consulta diz 'the reynolds number is small'. Como ambos os modelos fazem casamento puramente léxico, 'small' não casa com 'low' e a evidência mais discriminativa da consulta se perde. Trocar uma única palavra deve melhorar o ranking sem alterar o significado, é o caso mais puro de incompatibilidade de vocabulário (Aula 04, slide 39).",
     "num_relevant": 18,
     "versions": {
       "original": {

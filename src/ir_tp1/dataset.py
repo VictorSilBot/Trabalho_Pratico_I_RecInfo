@@ -4,26 +4,26 @@ Arquivos originais (University of Glasgow):
     http://ir.dcs.gla.ac.uk/resources/test_collections/cran/cran.tar.gz
 
 Conteúdo do tarball:
-    cran.all.1400 -- documentos, formato SMART (.I .T .A .B .W)
-    cran.qry      -- consultas, formato SMART (.I .W)
-    cranqrel      -- julgamentos de relevância: <query> <doc> <grau>
+    cran.all.1400: documentos, formato SMART (.I .T .A .B .W)
+    cran.qry:      consultas, formato SMART (.I .W)
+    cranqrel:      julgamentos de relevância: <query> <doc> <grau>
 
-ATENÇÃO -- detalhe que quebra implementações ingênuas:
-    Os identificadores ``.I`` de ``cran.qry`` NÃO são sequenciais
-    (001, 002, 004, 008, ..., 365), mas o arquivo ``cranqrel`` numera as
+ATENÇÃO, detalhe que quebra implementações ingênuas:
+    Os identificadores '.I' de 'cran.qry' NÃO são sequenciais
+    (001, 002, 004, 008, ..., 365), mas o arquivo 'cranqrel' numera as
     consultas de 1 a 225 pela POSIÇÃO no arquivo. Portanto a consulta de
-    número ``n`` no qrel corresponde à ``n``-ésima consulta de ``cran.qry``,
-    e não à consulta cujo ``.I`` vale ``n``. Este módulo renumera as
-    consultas por posição (mesma convenção adotada pelo ``ir_datasets``) e
-    preserva o identificador original em ``Query.original_id``.
+    número 'n' no qrel corresponde à 'n'-ésima consulta de 'cran.qry',
+    e não à consulta cujo '.I' vale 'n'. Este módulo renumera as
+    consultas por posição (mesma convenção adotada pelo 'ir_datasets') e
+    preserva o identificador original em 'Query.original_id'.
 
-Escala de relevância do Cranfield (ver ``cranqrel.readme``), na qual o grau
+Escala de relevância do Cranfield (ver 'cranqrel.readme'), na qual o grau
 1 é o MELHOR e o 4 é o PIOR:
-    1 -- resposta completa para a pergunta
-    2 -- alto grau de relevância
-    3 -- útil como background / sugestão de método
-    4 -- interesse mínimo (e.g. histórico)
-   -1 -- sem interesse (equivale ao código 5 de Cleverdon)
+    1: resposta completa para a pergunta
+    2: alto grau de relevância
+    3: útil como background / sugestão de método
+    4: interesse mínimo (e.g. histórico)
+   -1: sem interesse (equivale ao código 5 de Cleverdon)
 """
 
 from __future__ import annotations
@@ -62,8 +62,8 @@ class Document:
     def text(self) -> str:
         """Texto efetivamente indexado: título + resumo, sem duplicar o título.
 
-        Em 1395 dos 1400 documentos o campo ``.W`` já começa com o texto do
-        campo ``.T``; repetir o título dobraria artificialmente o ``tf`` dos
+        Em 1395 dos 1400 documentos o campo '.W' já começa com o texto do
+        campo '.T'; repetir o título dobraria artificialmente o 'tf' dos
         seus termos. Só concatenamos o título quando ele ainda não é prefixo
         do resumo (e quando o resumo está vazio).
         """
@@ -78,7 +78,7 @@ class Document:
 
 @dataclass(frozen=True)
 class Query:
-    query_id: int  # posição no arquivo (1..225) -- é a chave usada no qrel
+    query_id: int  # posição no arquivo (1..225), é a chave usada no qrel
     original_id: int  # valor do campo .I no cran.qry (não sequencial)
     text: str
 
@@ -88,7 +88,7 @@ def _alpha_norm(s: str) -> str:
 
 
 def download_cranfield(data_dir: Path, force: bool = False) -> Path:
-    """Baixa e extrai o tarball do Cranfield em ``data_dir/cran``.
+    """Baixa e extrai o tarball do Cranfield em 'data_dir/cran'.
 
     Se os arquivos já existirem, nada é baixado novamente. O SHA-256 do
     tarball é conferido e uma divergência gera apenas um aviso (a coleção é
@@ -120,15 +120,15 @@ def download_cranfield(data_dir: Path, force: bool = False) -> Path:
 
 
 def _split_smart_records(raw: str) -> list[str]:
-    """Divide um arquivo no formato SMART nos blocos iniciados por ``.I``."""
+    """Divide um arquivo no formato SMART nos blocos iniciados por '.I'."""
     return re.split(r"^\.I ", raw, flags=re.MULTILINE)[1:]
 
 
 def _parse_smart_fields(block: str, field_markers: tuple[str, ...]) -> tuple[int, dict[str, str]]:
     """Extrai o id (primeira linha) e os campos de um bloco SMART.
 
-    Uma linha só é tratada como marcador de campo quando, após ``strip()``,
-    ela é exatamente igual ao marcador (e.g. ``.W``). Isso evita interpretar
+    Uma linha só é tratada como marcador de campo quando, após 'strip()',
+    ela é exatamente igual ao marcador (e.g. '.W'). Isso evita interpretar
     como campo linhas do corpo que porventura comecem com ponto.
     """
     lines = block.split("\n")
@@ -168,7 +168,7 @@ def load_documents(cran_dir: Path) -> list[Document]:
 def load_queries(cran_dir: Path) -> list[Query]:
     """Carrega as consultas RENUMERANDO-AS por posição (1..225).
 
-    Ver a nota no topo do módulo: o ``cranqrel`` usa a posição, não o ``.I``.
+    Ver a nota no topo do módulo: o 'cranqrel' usa a posição, não o '.I'.
     """
     raw = (Path(cran_dir) / "cran.qry").read_text(encoding="utf-8", errors="replace")
     queries: list[Query] = []
@@ -183,11 +183,11 @@ def load_queries(cran_dir: Path) -> list[Query]:
 
 
 def load_qrels(cran_dir: Path) -> dict[int, dict[int, int]]:
-    """Retorna ``{query_id: {doc_id: grau}}`` com os graus brutos do Cranfield.
+    """Retorna '{query_id: {doc_id: grau}}' com os graus brutos do Cranfield.
 
-    Os graus são mantidos como estão no arquivo (incluindo ``-1``); a
+    Os graus são mantidos como estão no arquivo (incluindo '-1'); a
     conversão para relevância binária ou para ganho graduado é feita em
-    :mod:`ir_tp1.metrics`, para deixar a política de conversão explícita e
+    'ir_tp1.metrics', para deixar a política de conversão explícita e
     em um único lugar.
     """
     raw = (Path(cran_dir) / "cranqrel").read_text(encoding="utf-8", errors="replace")

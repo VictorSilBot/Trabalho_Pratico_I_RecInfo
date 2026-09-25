@@ -1,13 +1,13 @@
 """Reformulações manuais de consultas (requisito 8).
 
-Cinco consultas foram escolhidas e reescritas **manualmente**, cada uma
+Cinco consultas foram escolhidas e reescritas manualmente, cada uma
 ilustrando um tipo diferente de operação de reformulação. Os julgamentos de
-relevância NÃO foram usados para escolher as edições -- as reformulações
+relevância NÃO foram usados para escolher as edições, pois as reformulações
 partem apenas da leitura da consulta e do conhecimento do domínio
 (aerodinâmica), e a hipótese de cada uma foi registrada ANTES de rodar os
 modelos, para que a análise não seja construída depois do resultado.
 
-O campo ``hypothesis`` é justamente esse registro prévio.
+O campo 'hypothesis' é justamente esse registro prévio.
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ REFORMULATIONS: list[Reformulation] = [
             "os modelos fazem casamento puramente léxico, 'small' não casa com "
             "'low' e a evidência mais discriminativa da consulta se perde. "
             "Trocar uma única palavra deve melhorar o ranking sem alterar o "
-            "significado -- é o caso mais puro de incompatibilidade de "
+            "significado, é o caso mais puro de incompatibilidade de "
             "vocabulário (Aula 04, slide 39)."
         ),
     ),

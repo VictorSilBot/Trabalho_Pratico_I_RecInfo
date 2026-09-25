@@ -147,7 +147,7 @@ relevância).
 │   ├── bm25.py                    # BM25 explícito (req. 3)
 │   ├── metrics.py                 # P@k, R@k, F1, MAP, MRR, NDCG, curva P×R (req. 4)
 │   ├── query_reformulations.py    # as 5 reformulações manuais (req. 8)
-│   ├── experiments.py             # todos os experimentos (req. 1–9)
+│   ├── experiments.py             # todos os experimentos (req. 1 a 9)
 │   └── plots.py                   # figuras
 ├── tests/test_ir_tp1.py           # 16 testes de correção
 ├── report/ 

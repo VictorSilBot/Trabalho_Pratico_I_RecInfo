@@ -8,24 +8,23 @@ Função de ranqueamento (Aula 03, slide 25):
 
 Os três ingredientes, e o que cada parâmetro controla:
 
-* **Raridade** -- ``IDF(t)``. Termos que ocorrem em poucos documentos pesam
-  mais. Duas variantes estão implementadas (ver :class:`IDFVariant`).
-* **Saturação da frequência** -- o quociente cresce com ``f(t,d)`` mas tende
-  assintoticamente a ``k1 + 1``. Com ``k1 = 0`` o modelo vira binário (só
-  importa se o termo ocorre); quanto maior ``k1``, mais perto de linear fica
-  a resposta à frequência. É a diferença essencial em relação ao ``tf``
+- Raridade: 'IDF(t)'. Termos que ocorrem em poucos documentos pesam
+  mais. Duas variantes estão implementadas (ver 'IDFVariant').
+- Saturação da frequência: o quociente cresce com 'f(t,d)' mas tende
+  assintoticamente a 'k1 + 1'. Com 'k1 = 0' o modelo vira binário (só
+  importa se o termo ocorre); quanto maior 'k1', mais perto de linear fica
+  a resposta à frequência. É a diferença essencial em relação ao 'tf'
   logarítmico do modelo vetorial, que não satura.
-* **Normalização por comprimento** -- ``b`` interpola entre nenhuma
-  normalização (``b = 0``, documentos longos são favorecidos por acumularem
-  ocorrências) e normalização total (``b = 1``, ``f(t,d)`` é integralmente
-  dividido pelo comprimento relativo ``|d|/avgdl``).
+- Normalização por comprimento: 'b' interpola entre nenhuma
+  normalização ('b = 0', documentos longos são favorecidos por acumularem
+  ocorrências) e normalização total ('b = 1', 'f(t,d)' é integralmente
+  dividido pelo comprimento relativo '|d|/avgdl').
 
-Frequência do termo na consulta
--------------------------------
-A fórmula da aula não inclui o componente ``k3`` de saturação do lado da
-consulta. Adotamos a convenção usual de **somar a contribuição do termo
-tantas vezes quanto ele ocorre na consulta** (equivalente a ``k3 -> infinito``),
-implementada como uma multiplicação pela frequência ``qtf``. Nas consultas do
+Frequência do termo na consulta:
+A fórmula da aula não inclui o componente 'k3' de saturação do lado da
+consulta. Adotamos a convenção usual de somar a contribuição do termo
+tantas vezes quanto ele ocorre na consulta (equivalente a 'k3 -> infinito'),
+implementada como uma multiplicação pela frequência 'qtf'. Nas consultas do
 Cranfield isso raramente muda algo, pois termos repetidos em uma consulta são
 quase sempre stopwords.
 """
@@ -46,7 +45,7 @@ class IDFVariant(str, Enum):
 
     #: IDF de Robertson/Spärck Jones com suavização, na forma usada pelo
     #: Lucene: log(1 + (N - n + 0.5) / (n + 0.5)). O "1 +" garante que o
-    #: valor nunca seja negativo -- sem ele, termos presentes em mais da
+    #: valor nunca seja negativo, sem ele, termos presentes em mais da
     #: metade da coleção receberiam peso NEGATIVO e penalizariam documentos
     #: que os contêm, o que é indesejável numa coleção pequena e temática
     #: como a Cranfield (onde termos como "flow" ocorrem em muitos documentos).
@@ -72,12 +71,11 @@ def compute_idf(df: np.ndarray, num_docs: int, variant: IDFVariant) -> np.ndarra
 class BM25:
     """BM25 sobre um índice invertido.
 
-    Parâmetros
-    ----------
+    Parâmetros:
     index : índice invertido já construído.
-    k1 : saturação da frequência do termo (``k1 >= 0``).
-    b  : intensidade da normalização por comprimento (``0 <= b <= 1``).
-    idf_variant : forma do IDF (ver :class:`IDFVariant`).
+    k1 : saturação da frequência do termo ('k1 >= 0').
+    b  : intensidade da normalização por comprimento ('0 <= b <= 1').
+    idf_variant : forma do IDF (ver 'IDFVariant').
     """
 
     index: InvertedIndex
@@ -108,7 +106,7 @@ class BM25:
         """Vetor (N,) com o score BM25 de cada documento.
 
         Percorremos os termos da consulta e, para cada um, apenas a sua lista
-        de postings -- documentos que não contêm nenhum termo da consulta
+        de postings, documentos que não contêm nenhum termo da consulta
         ficam com score 0, como esperado.
         """
         counts = self.index.query_vector(query_text)
@@ -135,7 +133,7 @@ class BM25:
         return scores
 
     def rank(self, query_text: str, top_k: int | None = None) -> list[tuple[int, float]]:
-        """Ranking ``[(doc_id, score), ...]``, desempatado por doc_id crescente."""
+        """Ranking '[(doc_id, score), ...]', desempatado por doc_id crescente."""
         scores = self.score(query_text)
         return _rank_from_scores(scores, self.index.doc_ids, top_k)
 

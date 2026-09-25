@@ -1,20 +1,20 @@
 """Testes de correção da implementação.
 
-Executável tanto com ``pytest`` quanto diretamente:
+Executável tanto com 'pytest' quanto diretamente:
 
     python tests/test_ir_tp1.py
 
 Três famílias de teste:
 
-1. **Métricas contra valores calculados à mão**, usando o exercício do slide
+1. Métricas contra valores calculados à mão, usando o exercício do slide
    41 da Aula 05 (assim os números conferem com o que foi visto em aula).
-2. **Implementação de referência ingênua**: uma versão em Python puro, com
+2. Implementação de referência ingênua: uma versão em Python puro, com
    dicionários e laços, escrita diretamente a partir das fórmulas, é
    comparada com a versão vetorizada (scipy) sobre a coleção real. Se as
    duas concordarem em todos os 1400 documentos de várias consultas, a
    otimização com matrizes esparsas está correta.
-3. **Verificação cruzada com o scikit-learn** para o modelo vetorial, com a
-   ressalva de que o ``TfidfVectorizer`` usa ``idf = ln(N/df) + 1`` (o "+1"
+3. Verificação cruzada com o scikit-learn para o modelo vetorial, com a
+   ressalva de que o 'TfidfVectorizer' usa 'idf = ln(N/df) + 1' (o "+1"
    impede que termos muito frequentes zerem), então esperamos rankings
    altamente correlacionados, não idênticos.
 """
@@ -264,8 +264,8 @@ def test_ranking_tie_break_is_deterministic():
 def test_vsm_agrees_with_sklearn_tfidf():
     """O ranking deve ser fortemente correlacionado com o do scikit-learn.
 
-    Não é esperada igualdade exata: o ``TfidfVectorizer`` usa
-    ``idf = ln(N/df) + 1``, enquanto a Aula 04 define ``idf = log10(N/n)``.
+    Não é esperada igualdade exata: o 'TfidfVectorizer' usa
+    'idf = ln(N/df) + 1', enquanto a Aula 04 define 'idf = log10(N/n)'.
     O "+1" do sklearn impede que termos presentes em toda a coleção sejam
     anulados, o que muda ligeiramente a ordenação.
     """

@@ -1,15 +1,14 @@
 """Modelo Vetorial (requisito 2): ponderação TF-IDF e similaridade do cosseno.
 
-Esquema de ponderação
----------------------
-Seguimos exatamente o apresentado na Aula 04 (esquema ``ltc.ltc`` na notação
+Esquema de ponderação:
+Seguimos exatamente o apresentado na Aula 04 (esquema 'ltc.ltc' na notação
 SMART), aplicado tanto ao documento quanto à consulta:
 
     tf_{i,j}  = 1 + log10(f_{i,j})      se f_{i,j} > 0, senão 0
     idf_i     = log10(N / n_i)
     w_{i,j}   = tf_{i,j} * idf_i
 
-O documento ``d_j`` é então um vetor de dimensão ``|V|`` (uma coordenada por
+O documento 'd_j' é então um vetor de dimensão '|V|' (uma coordenada por
 termo do vocabulário), extremamente esparso, e a consulta é ponderada da
 mesma forma. O score é a similaridade do cosseno:
 
@@ -19,18 +18,17 @@ mesma forma. O score é a similaridade do cosseno:
 
 Como normalizamos os vetores de documento para norma L2 unitária no momento
 da indexação, e o vetor de consulta também é normalizado, o cosseno se reduz
-a um simples produto interno -- é o mesmo cálculo, apenas reorganizado para
+a um simples produto interno, é o mesmo cálculo, apenas reorganizado para
 ser feito de uma vez para os 1400 documentos.
 
-Observações sobre a formulação
-------------------------------
-* ``idf_i = log10(N/n_i)`` vale exatamente 0 para um termo que ocorre em
-  TODOS os documentos, que assim é silenciosamente eliminado do ranking --
+Observações sobre a formulação:
+- 'idf_i = log10(N/n_i)' vale exatamente 0 para um termo que ocorre em
+  TODOS os documentos, que assim é silenciosamente eliminado do ranking,
   comportamento discutido no slide 25 da Aula 04.
-* A base do logaritmo é uma escolha (usamos 10, convenção do Manning et al.).
-  A base afeta a escala relativa entre ``tf`` e ``idf``, mas o efeito é
-  desprezível na prática; ``log_base`` permite verificar isso empiricamente.
-* A normalização pelo cosseno é o que impede documentos longos de dominarem
+- A base do logaritmo é uma escolha (usamos 10, convenção do Manning et al.).
+  A base afeta a escala relativa entre 'tf' e 'idf', mas o efeito é
+  desprezível na prática; 'log_base' permite verificar isso empiricamente.
+- A normalização pelo cosseno é o que impede documentos longos de dominarem
   o ranking só por acumularem mais termos (Aula 04, slides 26-28).
 """
 
@@ -48,10 +46,9 @@ from .indexing import InvertedIndex
 class VectorSpaceModel:
     """Modelo vetorial TF-IDF com similaridade do cosseno.
 
-    Parâmetros
-    ----------
+    Parâmetros:
     index : índice invertido já construído.
-    log_base : base do logaritmo usada em ``1 + log(f)`` e em ``log(N/n)``.
+    log_base : base do logaritmo usada em '1 + log(f)' e em 'log(N/n)'.
     """
 
     index: InvertedIndex
@@ -66,7 +63,7 @@ class VectorSpaceModel:
             self.idf = np.log(idx.num_docs / np.maximum(idx.df, 1.0)) / log
 
         # Pesos dos documentos: w_ij = (1 + log f_ij) * idf_i, sobre a matriz
-        # esparsa. Operamos apenas nos elementos não nulos (`.data`), que são
+        # esparsa. Operamos apenas nos elementos não nulos ('.data'), que são
         # exatamente os pares (documento, termo) com f_ij > 0.
         weights = idx.tf.copy().astype(np.float64)
         weights.data = 1.0 + np.log(weights.data) / log
@@ -86,7 +83,7 @@ class VectorSpaceModel:
     def query_weights(self, query_text: str) -> dict[str, float]:
         """Pesos TF-IDF (já normalizados) dos termos da consulta.
 
-        Termos fora do vocabulário da coleção são descartados: seu ``n_i`` é
+        Termos fora do vocabulário da coleção são descartados: seu 'n_i' é
         zero e eles não podem casar com documento algum.
         """
         counts = self.index.query_vector(query_text)
@@ -127,7 +124,7 @@ class VectorSpaceModel:
         return scores
 
     def rank(self, query_text: str, top_k: int | None = None) -> list[tuple[int, float]]:
-        """Ranking ``[(doc_id, score), ...]`` em ordem decrescente de score.
+        """Ranking '[(doc_id, score), ...]' em ordem decrescente de score.
 
         O desempate é feito pelo id do documento (crescente), para que o
         ranking seja determinístico e reprodutível.

@@ -1,17 +1,16 @@
 """Métricas de avaliação (requisito 4), conforme as definições da Aula 05.
 
-Política de relevância (definida pelo enunciado)
-------------------------------------------------
+Política de relevância (definida pelo enunciado):
 Para as métricas BINÁRIAS (Precision, Recall, F1, MAP, MRR) é relevante todo
 documento com grau >= 1. O grau -1 e os documentos não julgados contam como
 não relevantes.
 
 Para o NDCG, mantemos os graus positivos como relevância graduada. Aqui há
-uma armadilha específica do Cranfield: **sua escala é invertida** -- o grau 1
+uma armadilha específica do Cranfield: sua escala é invertida: o grau 1
 é o melhor ("resposta completa") e o 4 é o pior ("interesse mínimo"), como
-documentado em ``cranqrel.readme``. Usar o grau bruto como ganho daria ao
+documentado em 'cranqrel.readme'. Usar o grau bruto como ganho daria ao
 documento MENOS relevante o MAIOR ganho, invertendo o que o NDCG deveria
-medir. Por isso o mapeamento padrão é :data:`GainMapping.INVERTED`:
+medir. Por isso o mapeamento padrão é 'GainMapping.INVERTED':
 
     grau  1 -> rel 4      (melhor)
     grau  2 -> rel 3
@@ -19,11 +18,11 @@ medir. Por isso o mapeamento padrão é :data:`GainMapping.INVERTED`:
     grau  4 -> rel 1
     grau -1, não julgado -> rel 0
 
-O mapeamento ``RAW`` (ganho = grau bruto) está implementado para permitir a
+O mapeamento 'RAW' (ganho = grau bruto) está implementado para permitir a
 comparação numérica entre as duas convenções, reportada no relatório.
 
-O ganho segue a forma comum da Aula 05, ``2^rel - 1``, e o desconto é
-``log2(i + 1)`` com ``i`` começando em 1.
+O ganho segue a forma comum da Aula 05, '2^rel - 1', e o desconto é
+'log2(i + 1)' com 'i' começando em 1.
 """
 
 from __future__ import annotations
@@ -57,7 +56,7 @@ def grade_to_gain_level(grade: int, mapping: GainMapping = GainMapping.INVERTED)
 
 
 def binary_relevant(qrels_for_query: dict[int, int]) -> set[int]:
-    """Conjunto ``R_q`` de documentos relevantes (grau >= 1)."""
+    """Conjunto 'R_q' de documentos relevantes (grau >= 1)."""
     return {doc_id for doc_id, grade in qrels_for_query.items() if grade >= 1}
 
 
@@ -65,10 +64,10 @@ def binary_relevant(qrels_for_query: dict[int, int]) -> set[int]:
 # Métricas binárias
 # ----------------------------------------------------------------------
 def precision_at_k(ranked_ids: Sequence[int], relevant: set[int], k: int) -> float:
-    """Fração dos ``k`` primeiros documentos que é relevante.
+    """Fração dos 'k' primeiros documentos que é relevante.
 
-    O denominador é ``k`` fixo (e não ``min(k, len(ranking))``): ranqueamos
-    toda a coleção, então o ranking sempre tem pelo menos ``k`` documentos.
+    O denominador é 'k' fixo (e não 'min(k, len(ranking))'): ranqueamos
+    toda a coleção, então o ranking sempre tem pelo menos 'k' documentos.
     """
     if k <= 0:
         return 0.0
@@ -78,7 +77,7 @@ def precision_at_k(ranked_ids: Sequence[int], relevant: set[int], k: int) -> flo
 
 
 def recall_at_k(ranked_ids: Sequence[int], relevant: set[int], k: int) -> float:
-    """Fração dos documentos relevantes que aparece nos ``k`` primeiros."""
+    """Fração dos documentos relevantes que aparece nos 'k' primeiros."""
     if not relevant:
         return 0.0
     hits = sum(1 for doc_id in ranked_ids[:k] if doc_id in relevant)
@@ -101,7 +100,7 @@ def average_precision(
 
         AP(q) = (1 / |R_q|) * sum_k  P@k * rel(k)
 
-    O denominador é ``|R_q|``, o número TOTAL de relevantes da consulta --
+    O denominador é '|R_q|', o número TOTAL de relevantes da consulta,
     não o número de relevantes recuperados. Assim, relevantes não
     recuperados contribuem com zero e a métrica penaliza a baixa revocação.
     """
@@ -118,7 +117,7 @@ def average_precision(
 
 
 def reciprocal_rank(ranked_ids: Sequence[int], relevant: set[int]) -> float:
-    """``1 / posição`` do primeiro documento relevante; 0 se não houver nenhum."""
+    """'1 / posição' do primeiro documento relevante; 0 se não houver nenhum."""
     for position, doc_id in enumerate(ranked_ids, start=1):
         if doc_id in relevant:
             return 1.0 / position
@@ -129,7 +128,7 @@ def reciprocal_rank(ranked_ids: Sequence[int], relevant: set[int]) -> float:
 # Métrica graduada
 # ----------------------------------------------------------------------
 def dcg_at_k(gains: Iterable[int], k: int) -> float:
-    """``DCG@k = sum_i (2^rel_i - 1) / log2(i + 1)``."""
+    """'DCG@k = sum_i (2^rel_i - 1) / log2(i + 1)'."""
     total = 0.0
     for position, relevance in enumerate(list(gains)[:k], start=1):
         if relevance > 0:
@@ -166,7 +165,7 @@ def interpolated_precision_recall(
 ) -> list[float]:
     """Precisão interpolada nos 11 níveis padrão de revocação.
 
-    Interpolação da Aula 05 (slide 20): ``P(r_j) = max_{r >= r_j} P(r)``.
+    Interpolação da Aula 05 (slide 20): 'P(r_j) = max_{r >= r_j} P(r)'.
     """
     if not relevant:
         return [0.0] * len(STANDARD_RECALL_LEVELS)
@@ -217,7 +216,7 @@ _AGGREGATE_NAME = {"AP": "MAP", "RR": "MRR"}
 def aggregate(per_query: dict[int, dict[str, float]]) -> dict[str, float]:
     """Agrega as métricas por consulta em médias sobre todas as consultas.
 
-    ``AP`` vira ``MAP`` e ``RR`` vira ``MRR``, que é exatamente a definição
+    'AP' vira 'MAP' e 'RR' vira 'MRR', que é exatamente a definição
     dessas duas métricas: a média sobre as consultas.
     """
     if not per_query:
@@ -236,7 +235,7 @@ def evaluate_run(
     k: int = 10,
     gain_mapping: GainMapping = GainMapping.INVERTED,
 ) -> tuple[dict[int, dict[str, float]], dict[str, float]]:
-    """Avalia um run completo, devolvendo ``(por_consulta, agregado)``."""
+    """Avalia um run completo, devolvendo '(por_consulta, agregado)'."""
     per_query = {
         query_id: evaluate_query(ranked, qrels.get(query_id, {}), k, gain_mapping)
         for query_id, ranked in run.items()

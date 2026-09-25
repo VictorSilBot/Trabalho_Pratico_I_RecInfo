@@ -1,27 +1,26 @@
 """Pré-processamento textual: tokenização, normalização, stopwords e stemming.
 
 As quatro configurações exigidas pelo enunciado (requisito 1) são expostas em
-:data:`PREPROCESSING_CONFIGS`:
+'PREPROCESSING_CONFIGS':
 
-    ``none``      -- sem remoção de stopwords e sem stemming (linha de base)
-    ``stop``      -- apenas remoção de stopwords
-    ``stem``      -- apenas stemming (Porter)
-    ``stop_stem`` -- remoção de stopwords + stemming
+    'none':      sem remoção de stopwords e sem stemming (linha de base)
+    'stop':      apenas remoção de stopwords
+    'stem':      apenas stemming (Porter)
+    'stop_stem': remoção de stopwords + stemming
 
-Decisões de implementação
--------------------------
-Tokenização: expressão regular ``[a-z]+`` sobre o texto já convertido para
+Decisões de implementação:
+Tokenização: expressão regular '[a-z]+' sobre o texto já convertido para
 minúsculas. É determinística, não depende de modelos baixados em tempo de
 execução e casa bem com o Cranfield, cujo texto é ASCII técnico. O efeito
 colateral relevante é que hifens e barras viram separadores
-(``boundary-layer-control`` -> ``boundary``, ``layer``, ``control``) e que
-números são descartados -- ambos discutidos no relatório.
+('boundary-layer-control' -> 'boundary', 'layer', 'control') e que
+números são descartados, ambos discutidos no relatório.
 
-Stopwords: lista ``english`` do NLTK (198 formas). Uma cópia é gravada em
-``data/stopwords_en.txt`` no primeiro uso para que a execução seja
+Stopwords: lista 'english' do NLTK (198 formas). Uma cópia é gravada em
+'data/stopwords_en.txt' no primeiro uso para que a execução seja
 reprodutível mesmo sem rede.
 
-Stemming: ``nltk.stem.PorterStemmer``, com memoização, pois o mesmo tipo
+Stemming: 'nltk.stem.PorterStemmer', com memoização, pois o mesmo tipo
 reaparece milhares de vezes na coleção.
 """
 
@@ -34,7 +33,7 @@ from pathlib import Path
 
 _TOKEN_RE = re.compile(r"[a-z]+")
 
-# Preenchido sob demanda por :func:`load_stopwords`.
+# Preenchido sob demanda por 'load_stopwords'.
 _STOPWORDS_CACHE: frozenset[str] | None = None
 
 

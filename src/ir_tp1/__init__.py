@@ -1,4 +1,4 @@
-"""Trabalho Prático 1 -- SCC0282 Recuperação de Informação (ICMC/USP).
+"""Trabalho Prático 1 - SCC0282 Recuperação de Informação (ICMC/USP).
 
 Sistema de recuperação textual sobre a coleção Cranfield, com Modelo Vetorial
 (TF-IDF + cosseno) e Modelo Probabilístico (BM25), avaliados com Precision@10,

@@ -1,9 +1,8 @@
 """Geração dos gráficos do relatório.
 
-Paleta
-------
+Paleta:
 Usamos a paleta categórica de referência sem alterações: slot 1 (azul
-``#2a78d6``) para o Modelo Vetorial e slot 2 (laranja ``#eb6834``) para o
+'#2a78d6') para o Modelo Vetorial e slot 2 (laranja '#eb6834') para o
 BM25. São slots adjacentes, cuja separação para daltonismo já é validada.
 A cor identifica sempre a MESMA entidade em todas as figuras, e nunca a
 posição/ranking. Os mapas de calor usam uma rampa sequencial de um único
@@ -111,7 +110,7 @@ def _save(fig, path: Path) -> Path:
 
 
 # ======================================================================
-# Figura 1 -- efeito do pré-processamento
+# Figura 1: efeito do pré-processamento
 # ======================================================================
 def plot_preprocessing_compact(summary, figures_dir: Path) -> Path:
     """Versão de painel único (só MAP) para caber legível em uma coluna do PDF."""
@@ -193,7 +192,7 @@ def plot_preprocessing(summary, figures_dir: Path) -> Path:
 
 
 # ======================================================================
-# Figura 2 -- comparação entre modelos
+# Figura 2: comparação entre modelos
 # ======================================================================
 def plot_model_comparison(summary, figures_dir: Path) -> Path:
     """Barras agrupadas com todas as métricas agregadas dos dois modelos."""
@@ -229,7 +228,7 @@ def plot_model_comparison(summary, figures_dir: Path) -> Path:
 
 
 # ======================================================================
-# Figura 3 -- curva precisão x revocação em 11 pontos
+# Figura 3: curva precisão x revocação em 11 pontos
 # ======================================================================
 def plot_precision_recall(curves, figures_dir: Path) -> Path:
     _apply_style()
@@ -270,10 +269,10 @@ def plot_precision_recall(curves, figures_dir: Path) -> Path:
 
 
 # ======================================================================
-# Figura 4 -- grade de parâmetros do BM25
+# Figura 4: grade de parâmetros do BM25
 # ======================================================================
 def plot_bm25_grid(grid, figures_dir: Path, metric: str = "MAP") -> Path:
-    """Mapa de calor ``k1 x b`` com rampa sequencial de um único matiz."""
+    """Mapa de calor 'k1 x b' com rampa sequencial de um único matiz."""
     _apply_style()
     k1_values = sorted(grid["k1"].unique())
     b_values = sorted(grid["b"].unique())
@@ -324,7 +323,7 @@ def plot_bm25_grid(grid, figures_dir: Path, metric: str = "MAP") -> Path:
 
 
 # ======================================================================
-# Figura 5 -- dispersão da AP por consulta
+# Figura 5: dispersão da AP por consulta
 # ======================================================================
 def plot_per_query_scatter(comparison, figures_dir: Path) -> Path:
     """AP do BM25 contra AP do vetorial, uma marca por consulta."""
@@ -357,8 +356,8 @@ def plot_per_query_scatter(comparison, figures_dir: Path) -> Path:
         color=TEXT_SECONDARY,
         fontweight="bold",
     )
-    ax.set_xlabel("AP -- Modelo Vetorial")
-    ax.set_ylabel("AP -- BM25")
+    ax.set_xlabel("AP - Modelo Vetorial")
+    ax.set_ylabel("AP - BM25")
     ax.set_title("Average Precision por consulta")
     ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(-0.03, 1.03)
@@ -369,7 +368,7 @@ def plot_per_query_scatter(comparison, figures_dir: Path) -> Path:
 
 
 # ======================================================================
-# Figura 6 -- reformulação de consultas
+# Figura 6: reformulação de consultas
 # ======================================================================
 def plot_reformulation(frame, figures_dir: Path) -> Path:
     """Um painel por modelo; em cada um, AP antes e depois da reformulação."""

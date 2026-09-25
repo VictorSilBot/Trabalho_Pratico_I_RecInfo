@@ -1,14 +1,14 @@
 """Índice invertido da coleção, compartilhado pelo Modelo Vetorial e pelo BM25.
 
-A estrutura central é uma matriz esparsa CSR ``tf`` de dimensão
-``(N documentos x V termos)`` contendo frequências BRUTAS de termo. Ambos os
+A estrutura central é uma matriz esparsa CSR 'tf' de dimensão
+'(N documentos x V termos)' contendo frequências BRUTAS de termo. Ambos os
 modelos derivam seus pesos dessa mesma matriz, o que garante que qualquer
 diferença de desempenho entre eles venha da função de ranqueamento e não de
 diferenças de indexação.
 
 Guardar a matriz em CSR (linhas = documentos) e também em CSC (colunas =
 termos) dá acesso barato tanto ao vetor de um documento quanto à lista de
-postings de um termo -- que é o acesso natural do BM25.
+postings de um termo, que é o acesso natural do BM25.
 """
 
 from __future__ import annotations
@@ -25,14 +25,13 @@ from .preprocess import Preprocessor
 class InvertedIndex:
     """Índice invertido com estatísticas de coleção.
 
-    Atributos
-    ---------
+    Atributos:
     vocabulary : mapeia termo -> coluna da matriz.
-    terms      : lista de termos na ordem das colunas (inverso de ``vocabulary``).
+    terms      : lista de termos na ordem das colunas (inverso de 'vocabulary').
     tf         : matriz CSR (N x V) de frequências brutas de termo.
     tf_csc     : a mesma matriz em CSC, para varrer postings por termo.
-    df         : vetor (V,) com a frequência de documentos ``n_i`` de cada termo.
-    doc_lengths: vetor (N,) com ``|d|`` em número de tokens (após o
+    df         : vetor (V,) com a frequência de documentos 'n_i' de cada termo.
+    doc_lengths: vetor (N,) com '|d|' em número de tokens (após o
                  pré-processamento), usado na normalização do BM25.
     doc_ids    : identificadores originais dos documentos, na ordem das linhas.
     """
@@ -65,9 +64,9 @@ class InvertedIndex:
         return self.vocabulary.get(term)
 
     def postings(self, term: str) -> tuple[np.ndarray, np.ndarray]:
-        """Retorna ``(indices_de_documentos, frequencias)`` para um termo.
+        """Retorna '(indices_de_documentos, frequencias)' para um termo.
 
-        Se o termo não estiver no vocabulário, retorna arrays vazios -- é o
+        Se o termo não estiver no vocabulário, retorna arrays vazios, é o
         comportamento desejado para termos de consulta fora da coleção, que
         simplesmente não contribuem para nenhum score.
         """
@@ -79,7 +78,7 @@ class InvertedIndex:
         return self.tf_csc.indices[start:end], self.tf_csc.data[start:end]
 
     def doc_term_frequency(self, doc_id: int, term: str) -> float:
-        """``f_{i,j}`` para um par (documento, termo), pelo id original do doc."""
+        """'f_{i,j}' para um par (documento, termo), pelo id original do doc."""
         column = self.term_id(term)
         if column is None:
             return 0.0
@@ -87,7 +86,7 @@ class InvertedIndex:
         return float(self.tf[row, column])
 
     def query_vector(self, text: str) -> dict[str, int]:
-        """Pré-processa a consulta e devolve ``{termo: frequência na consulta}``."""
+        """Pré-processa a consulta e devolve '{termo: frequência na consulta}'."""
         counts: dict[str, int] = {}
         for token in self.preprocessor(text):
             counts[token] = counts.get(token, 0) + 1
@@ -99,7 +98,7 @@ def build_index(
     doc_ids: list[int],
     preprocessor: Preprocessor,
 ) -> InvertedIndex:
-    """Constrói o índice invertido aplicando ``preprocessor`` a cada documento."""
+    """Constrói o índice invertido aplicando 'preprocessor' a cada documento."""
     if len(texts) != len(doc_ids):
         raise ValueError("texts e doc_ids devem ter o mesmo tamanho")
 
