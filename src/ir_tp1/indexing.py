@@ -8,8 +8,8 @@ diferença de desempenho entre eles venha da função de ranqueamento e não de
 diferenças de indexação.
 
 Guardar a matriz em CSR (linhas = documentos) e também em CSC (colunas =
-termos) dá acesso barato tanto ao vetor de um documento (acesso natural do CSR)
-quanto à lista de postings de um termo (acesso natural do BM25).
+termos) dá acesso barato tanto ao vetor de um documento (acesso natural
+do vetorial) quanto à lista de postings de um termo (acesso natural do BM25).
 """
 
 from __future__ import annotations
