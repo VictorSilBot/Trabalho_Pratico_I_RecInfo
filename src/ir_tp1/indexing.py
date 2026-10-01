@@ -1,14 +1,15 @@
 """Índice invertido da coleção, compartilhado pelo Modelo Vetorial e pelo BM25.
 
 A estrutura central é uma matriz esparsa CSR 'tf' de dimensão
-'(N documentos x V termos)' contendo frequências BRUTAS de termo. Ambos os
-modelos derivam seus pesos dessa mesma matriz, o que garante que qualquer
+N documentos x V termos, 1400 por 4292, contendo frequências BRUTAS de termo.
+
+Ambos os modelos derivam seus pesos dessa mesma matriz, o que garante que qualquer
 diferença de desempenho entre eles venha da função de ranqueamento e não de
 diferenças de indexação.
 
 Guardar a matriz em CSR (linhas = documentos) e também em CSC (colunas =
-termos) dá acesso barato tanto ao vetor de um documento quanto à lista de
-postings de um termo, que é o acesso natural do BM25.
+termos) dá acesso barato tanto ao vetor de um documento (acesso natural do CSR)
+quanto à lista de postings de um termo (acesso natural do BM25).
 """
 
 from __future__ import annotations

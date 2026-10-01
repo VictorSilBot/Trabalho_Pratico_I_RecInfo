@@ -1,4 +1,4 @@
-"""Download e parsing da coleção Cranfield (1400 documentos, 225 consultas).
+"""Download e parsing da coleção Cranfield (1400 documentos, 225 consultas, 1837 julgamentos).
 
 Arquivos originais (University of Glasgow):
     http://ir.dcs.gla.ac.uk/resources/test_collections/cran/cran.tar.gz
@@ -13,7 +13,7 @@ ATENÇÃO, detalhe que quebra implementações ingênuas:
     (001, 002, 004, 008, ..., 365), mas o arquivo 'cranqrel' numera as
     consultas de 1 a 225 pela POSIÇÃO no arquivo. Portanto a consulta de
     número 'n' no qrel corresponde à 'n'-ésima consulta de 'cran.qry',
-    e não à consulta cujo '.I' vale 'n'. Este módulo renumera as
+    e não à consulta cujo '.I' vale 'n'. Este módulo (load_queries) renumera as
     consultas por posição (mesma convenção adotada pelo 'ir_datasets') e
     preserva o identificador original em 'Query.original_id'.
 
@@ -39,7 +39,10 @@ from pathlib import Path
 CRANFIELD_URL = "http://ir.dcs.gla.ac.uk/resources/test_collections/cran/cran.tar.gz"
 
 # Verificado no download de referência usado nos experimentos deste trabalho.
-CRANFIELD_SHA256 = "8c48a8412e4a7e6e0dd5af99c959f8d75fdf88135602adc1a56aa22770652d64"
+CRANFIELD_SHA256 = "8c48a8412e4a7e6e0dd5af99c959f8d75fdf88135602adc1a56aa22770652d64" 
+# SHA 256 é uma função hash criptográfica que transforma dados de entrada
+# de qualquer tamanho em uma sequência única de 256 bits, 
+# representada por 64 caracteres hexadecimais.
 
 _EXPECTED_FILES = ("cran.all.1400", "cran.qry", "cranqrel")
 

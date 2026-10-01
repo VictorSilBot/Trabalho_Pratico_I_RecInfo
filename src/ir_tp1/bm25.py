@@ -2,19 +2,20 @@
 
 Função de ranqueamento (Aula 03, slide 25):
 
-                          f(t,d) * (k1 + 1)
-    score(d,q) = sum   IDF(t) * ---------------------------------------
+                                            f(t,d) * (k1 + 1)
+    score(d,q) =  sum   IDF(t) * ---------------------------------------
                  t in q          f(t,d) + k1 * (1 - b + b * |d| / avgdl)
 
-Os três ingredientes, e o que cada parâmetro controla:
 
 - Raridade: 'IDF(t)'. Termos que ocorrem em poucos documentos pesam
   mais. Duas variantes estão implementadas (ver 'IDFVariant').
+
 - Saturação da frequência: o quociente cresce com 'f(t,d)' mas tende
   assintoticamente a 'k1 + 1'. Com 'k1 = 0' o modelo vira binário (só
   importa se o termo ocorre); quanto maior 'k1', mais perto de linear fica
   a resposta à frequência. É a diferença essencial em relação ao 'tf'
   logarítmico do modelo vetorial, que não satura.
+  
 - Normalização por comprimento: 'b' interpola entre nenhuma
   normalização ('b = 0', documentos longos são favorecidos por acumularem
   ocorrências) e normalização total ('b = 1', 'f(t,d)' é integralmente
